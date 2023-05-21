@@ -1,8 +1,9 @@
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 using TMPro;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Localizations
+namespace sm_application.Scripts.Main.Localizations
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextMeshProUILocalized : LocalizedTextComponent
@@ -26,7 +27,7 @@ namespace smApplication.Scripts.Main.Localizations
                 return;
             }
             
-            _textMesh.text = _prefix + Services.Services.Get<LocalizationService>().GetLocalizedText(_localizedTextKey) + _postfix;
+            _textMesh.text = _prefix + Services.Get<LocalizationService>().GetLocalizedText(_localizedTextKey) + _postfix;
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
 using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Settings;
-using smApplication.Scripts.Main.Wrappers;
+using sm_application.Scripts.Main.Settings;
+using sm_application.Scripts.Main.Wrappers;
 using Tayx.Graphy;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
-    public class ScreenService : IService, IConstructInstaller
+    public class ScreenService : IService, IConstructInstaller, IDisposable
     {
         public Action<bool> OnDebugProfilerToggleSwitched; 
 
@@ -57,9 +57,10 @@ namespace smApplication.Scripts.Main.Services
             OnDebugProfilerToggleSwitched?.Invoke(value);
         }
 
-        ~ScreenService()
+        public void Dispose()
         {
             _internalProfilerToggle.onValueChanged.RemoveListener(OnProfilerToggleSwitched);
+            GC.SuppressFinalize(this);
         }
         
         public void ActiveProfileVolume<T>(bool active) where T : IPostProcessComponent

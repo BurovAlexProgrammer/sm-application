@@ -1,17 +1,17 @@
 using System;
-using smApplication.Scripts.Main.Localizations;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.UI;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Localizations;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace smApplication.Scripts.Main.Menu
+namespace sm_application.Scripts.Main.Menu
 {
     public class MenuSettingsView : MenuView
     {
-        [SerializeField] private MenuSettingsController _settingsController;
+        [SerializeField] private MenuSettingsController _menuSettingsController;
         [SerializeField] private Button _buttonSave;
         [SerializeField] private Button _buttonReset;
         [SerializeField] private VideoSettingViews _videoSettingViews;
@@ -28,8 +28,8 @@ namespace smApplication.Scripts.Main.Menu
         
         private void Awake()
         {
-            _settingsService = Services.Services.Get<SettingsService>();
-            _localizationService = Services.Services.Get<LocalizationService>();
+            _settingsService = Services.Get<SettingsService>();
+            _localizationService = Services.Get<LocalizationService>();
             _buttonSave.onClick.AddListener(SaveSettings);
             _buttonReset.onClick.AddListener(ResetToDefault);
             var videoSettings = _settingsService.Video;
@@ -81,13 +81,13 @@ namespace smApplication.Scripts.Main.Menu
 
         private void SaveSettings()
         {
-            _settingsController.Save();
+            _menuSettingsController.Save();
             GoPrevMenu();
         }
         
         private void ResetToDefault()
         {
-            _settingsController.ResetToDefault();
+            _menuSettingsController.ResetToDefault();
             Init();
         }
         

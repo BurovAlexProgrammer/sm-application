@@ -1,14 +1,15 @@
 using System;
 using System.Linq;
-using smApplication.Scripts.Main.DTO.Enums;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.DTO.Enums;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using sm_application.Scripts.Main.Service;
 using UnityEditor;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class GameStateService : IService, IConstruct
     {

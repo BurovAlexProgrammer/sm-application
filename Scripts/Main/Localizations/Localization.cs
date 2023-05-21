@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Localizations
+namespace sm_application.Scripts.Main.Localizations
 {
     public class Localization
     {

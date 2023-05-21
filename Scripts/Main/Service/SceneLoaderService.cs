@@ -1,12 +1,12 @@
 using System;
 using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.DTO.Enums;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.DTO.Enums;
+using sm_application.Scripts.Main.Service;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class SceneLoaderService : IService, IConstruct
     {

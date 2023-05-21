@@ -1,7 +1,8 @@
-﻿using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main
+namespace sm_application.Scripts.Main
 {
     public class CameraHolder : MonoBehaviour
     {
@@ -9,7 +10,7 @@ namespace smApplication.Scripts.Main
 
         private void Awake()
         {
-            _screenService = Services.Services.Get<ScreenService>();
+            _screenService = Services.Get<ScreenService>();
         }
 
         private void OnDestroy()

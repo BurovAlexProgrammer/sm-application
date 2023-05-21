@@ -1,8 +1,8 @@
-﻿using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
 using UnityEngine.Rendering.Universal;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class ScreenSystem : BaseSystem
     {
@@ -12,15 +12,15 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _screenService = Services.Services.Get<ScreenService>();
-            _settingsService = Services.Services.Get<SettingsService>();
+            _screenService = Services.Get<ScreenService>();
+            _settingsService = Services.Get<SettingsService>();
             _screenService.OnDebugProfilerToggleSwitched += OnDebugProfilerToggleSwitched;
         }
 
-        public override void OnDispose()
+        public override void Dispose()
         {
             _screenService.OnDebugProfilerToggleSwitched -= OnDebugProfilerToggleSwitched;
-            base.OnDispose();
+            base.Dispose();
         }
 
         private void OnDebugProfilerToggleSwitched(bool value)

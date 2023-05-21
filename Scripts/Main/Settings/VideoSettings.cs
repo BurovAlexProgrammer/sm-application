@@ -1,10 +1,11 @@
 using System;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace smApplication.Scripts.Main.Settings
+namespace sm_application.Scripts.Main.Settings
 {
     [Serializable]
     [CreateAssetMenu(menuName = "Custom/Settings/Video Settings")]
@@ -24,7 +25,7 @@ namespace smApplication.Scripts.Main.Settings
 
         public override void ApplySettings(SettingsService settingsService)
         {
-            Services.Services.Get<ScreenService>().ApplySettings(this);
+            Services.Get<ScreenService>().ApplySettings(this);
         }
     }
 }

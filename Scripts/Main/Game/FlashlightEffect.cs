@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Game
+namespace sm_application.Scripts.Main.Game
 {
     public class FlashlightEffect : MonoBehaviour
     { 

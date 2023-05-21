@@ -1,7 +1,7 @@
 ﻿using smApplication.Scripts.Extension;
 using Cysharp.Threading.Tasks;
 
-namespace smApplication.Scripts.Main.Game.GameStates
+namespace sm_application.Scripts.Main.Game.GameStates
 {
     public static partial class GameState
     {

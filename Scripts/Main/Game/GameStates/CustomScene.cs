@@ -1,7 +1,8 @@
-﻿using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Service;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Service;
 
-namespace smApplication.Scripts.Main.Game.GameStates
+namespace sm_application.Scripts.Main.Game.GameStates
 {
     public static partial class GameState
     {
@@ -10,7 +11,7 @@ namespace smApplication.Scripts.Main.Game.GameStates
             public override async UniTask EnterState()
             {
                 await UniTask.Yield();
-                Services.Services.Get<GameStateService>().PrepareToPlay();
+                Services.Get<GameStateService>().PrepareToPlay();
             }
         }
     }

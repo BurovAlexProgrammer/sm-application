@@ -1,13 +1,12 @@
 ﻿using System.Collections;
-using smApplication.Scripts.Main.DTO;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Game;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Systems;
 using DG.Tweening;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Game;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Systems;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Installers
+namespace sm_application.Scripts.Main.Installers
 {
     public class Startup : MonoBehaviour
     {
@@ -23,16 +22,16 @@ namespace smApplication.Scripts.Main.Installers
 
             AppContext.Instantiate();
             DOTween.SetTweensCapacity(1000, 50);
-            Services.Services.Register<ControlService>(_controlServiceInstaller);
-            Services.Services.Register<ScreenService>(_screenServiceInstaller);
-            Services.Services.Register<PoolService>();
-            Services.Services.Register<DebugService>(_debugServiceInstaller);
-            Services.Services.Register<SceneLoaderService>();
-            Services.Services.Register<StatisticService>();
-            Services.Services.Register<AudioService>(_audioServiceInstaller);
-            Services.Services.Register<SettingsService>(_settingsServiceInstaller);
-            Services.Services.Register<GameStateService>();
-            Services.Services.Register<LocalizationService>();
+            Services.Register<ControlService>(_controlServiceInstaller);
+            Services.Register<ScreenService>(_screenServiceInstaller);
+            Services.Register<PoolService>();
+            Services.Register<DebugService>(_debugServiceInstaller);
+            Services.Register<SceneLoaderService>();
+            Services.Register<StatisticService>();
+            Services.Register<AudioService>(_audioServiceInstaller);
+            Services.Register<SettingsService>(_settingsServiceInstaller);
+            Services.Register<GameStateService>();
+            Services.Register<LocalizationService>();
             
             SystemsService.Bind<ControlSystem>();
             SystemsService.Bind<ScreenSystem>();
@@ -48,8 +47,8 @@ namespace smApplication.Scripts.Main.Installers
 
         private void OnApplicationQuit()
         {
-            Services.Services.Dispose();
-            SystemsService.Dispose();
+            // SystemsService.Dispose();
+            // Services.Dispose();
         }
         
         private IEnumerator LateStartup()

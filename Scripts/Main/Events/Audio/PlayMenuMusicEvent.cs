@@ -1,4 +1,4 @@
-﻿namespace smApplication.Scripts.Main.Events.Audio
+﻿namespace sm_application.Scripts.Main.Events.Audio
 {
     public class PlayMenuMusicEvent : BaseEvent
     {

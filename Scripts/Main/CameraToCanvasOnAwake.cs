@@ -1,8 +1,9 @@
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Service;
 using JetBrains.Annotations;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main
+namespace sm_application.Scripts.Main
 {
     [RequireComponent(typeof(Canvas))]
     public class CameraToCanvasOnAwake : MonoBehaviour
@@ -13,7 +14,7 @@ namespace smApplication.Scripts.Main
         private void OnEnable()
         {
             var canvas = GetComponent<Canvas>();
-            var screenService = Services.Services.Get<ScreenService>();
+            var screenService = Services.Get<ScreenService>();
             screenService.SetCameraToCanvas(_cameraType == ScreenService.CameraType.MainCamera ? canvas : null);
             canvas.planeDistance = _planeDistance;
             enabled = false;

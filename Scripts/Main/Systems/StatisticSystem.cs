@@ -1,7 +1,7 @@
-﻿using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class StatisticSystem : BaseSystem
     {

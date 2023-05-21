@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using smApplication.Scripts.Extension.Attributes;
-using smApplication.Scripts.Main.UI;
+using sm_application.Scripts.Main.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Menu
+namespace sm_application.Scripts.Main.Menu
 {
     public abstract class MenuController : MonoBehaviour
     {

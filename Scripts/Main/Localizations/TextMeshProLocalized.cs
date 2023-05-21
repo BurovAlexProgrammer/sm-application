@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Localizations
+namespace sm_application.Scripts.Main.Localizations
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextMeshProLocalized : LocalizedTextComponent

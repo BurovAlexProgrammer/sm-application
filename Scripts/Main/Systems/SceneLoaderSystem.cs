@@ -1,10 +1,11 @@
-﻿using smApplication.Scripts.Main.DTO.Enums;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Wrappers;
+﻿using sm_application.Scripts.Main.DTO.Enums;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Wrappers;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Service;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class SceneLoaderSystem : BaseSystem
     {
@@ -13,7 +14,7 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _sceneLoader = Services.Services.Get<SceneLoaderService>();
+            _sceneLoader = Services.Get<SceneLoaderService>();
         }
         
         public override void RemoveEventHandlers()

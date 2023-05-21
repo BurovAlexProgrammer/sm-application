@@ -1,4 +1,4 @@
-﻿namespace smApplication.Scripts.Main.DTO.Enums
+﻿namespace sm_application.Scripts.Main.DTO.Enums
 {
     public enum SceneName
     {

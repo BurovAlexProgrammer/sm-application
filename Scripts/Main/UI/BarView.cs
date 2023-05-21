@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace smApplication.Scripts.Main.UI
+namespace sm_application.Scripts.Main.UI
 {
     public class BarView : MonoBehaviour
     {

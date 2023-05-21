@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using smApplication.Scripts.Main.Localizations;
+using sm_application.Scripts.Main.Localizations;
 using UnityEngine;
 using Newtonsoft.Json;
 

@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.UI
+namespace sm_application.Scripts.Main.UI
 {
     public class TextField : MonoBehaviour
     {

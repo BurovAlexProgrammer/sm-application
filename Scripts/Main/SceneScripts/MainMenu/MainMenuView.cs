@@ -1,9 +1,9 @@
-using smApplication.Scripts.Main.Menu;
+using sm_application.Scripts.Main.Menu;
 using UnityEngine;
 using UnityEngine.UI;
-using static smApplication.Scripts.Main.Menu.MenuController;
+using static sm_application.Scripts.Main.Menu.MenuController;
 
-namespace smApplication.Scripts.Main.SceneScripts.MainMenu
+namespace sm_application.Scripts.Main.SceneScripts.MainMenu
 {
     public class MainMenuView : MonoBehaviour
     {

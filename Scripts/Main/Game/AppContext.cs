@@ -1,8 +1,8 @@
-﻿using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Service;
+using smApplication.Scripts.Extension;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Game
+namespace sm_application.Scripts.Main.Game
 {
     public class AppContext : MonoBehaviour
     {
@@ -35,8 +35,8 @@ namespace smApplication.Scripts.Main.Game
 
         private void OnApplicationQuit()
         {
-            Services.Services.Dispose();
             SystemsService.Dispose();
+            Services.Dispose();
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.DTO.Enums;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Wrappers;
+﻿using sm_application.Scripts.Main.DTO.Enums;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Wrappers;
+using smApplication.Scripts.Extension;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class GameStateSystem : BaseSystem
     {
@@ -17,15 +17,15 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _gameStateService = Services.Services.Get<GameStateService>();
-            _controlService = Services.Services.Get<ControlService>();
+            _gameStateService = Services.Get<GameStateService>();
+            _controlService = Services.Get<ControlService>();
             _controlService.Controls.Player.Pause.BindAction(BindActions.Started, PauseGame);
         }
 
-        public override void OnDispose()
+        public override void Dispose()
         {
-            base.OnDispose();
-            Services.Services.Get<ControlService>().Controls.Player.Pause.UnbindAction(BindActions.Started, PauseGame);
+            base.Dispose();
+            Services.Get<ControlService>().Controls.Player.Pause.UnbindAction(BindActions.Started, PauseGame);
         }
 
         public override void RemoveEventHandlers()

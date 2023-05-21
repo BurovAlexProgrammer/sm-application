@@ -1,9 +1,9 @@
 ﻿using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Game;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Game;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public abstract class BaseServiceInstaller: MonoBehaviour, IServiceInstaller
     {

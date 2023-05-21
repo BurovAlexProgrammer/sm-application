@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Wrappers;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEngine;
-using AppContext = smApplication.Scripts.Main.Game.AppContext;
+using AppContext = sm_application.Scripts.Main.Game.AppContext;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class PoolService : IService, IConstruct
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Systems;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Systems;
 using UnityEditor;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public static class SystemsService
     {
@@ -48,6 +48,7 @@ namespace smApplication.Scripts.Main.Services
         {
             foreach (var key in _systems.Keys.ToList())
             {
+                _systems[key].Dispose();
                 _systems[key] = null;
             }
             

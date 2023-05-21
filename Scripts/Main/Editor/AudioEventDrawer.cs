@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Audio.Editor
+namespace sm_application.Scripts.Main.Audio.Editor
 {
     [CustomEditor(typeof(AudioEvent), true)]
     public class AudioEventDrawer : UnityEditor.Editor {

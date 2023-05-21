@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using smApplication.Scripts.Main.DTO;
-using smApplication.Scripts.Main.Services;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using sm_application.Scripts.Main.DTO;
 using UnityEngine;
-using static smApplication.Scripts.Main.DTO.StatisticData;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
-    public class StatisticService : IService, IConstruct
+    public class StatisticService : IService, IConstruct, IDisposable
     {
-        public Action<RecordName, string> RecordChanged; 
+        public Action<StatisticData.RecordName, string> RecordChanged; 
         
         private StatisticData _statisticData;
         private string _storedFolder;
@@ -26,17 +24,17 @@ namespace smApplication.Scripts.Main.Services
             TimerExecuting();
         }
 
-        ~StatisticService()
+        public void Dispose()
         {
-            SaveToFile();
+            GC.SuppressFinalize(this);
         }
 
-        public string GetRecord(RecordName recordName)
+        public string GetRecord(StatisticData.RecordName recordName)
         {
             return _statisticData.CommonRecords[recordName];
         }
 
-        public void AddValueToRecord(RecordName recordName, int value)
+        public void AddValueToRecord(StatisticData.RecordName recordName, int value)
         {
             if (value == 0) return;
 
@@ -47,7 +45,7 @@ namespace smApplication.Scripts.Main.Services
             RecordChanged?.Invoke(recordName, _statisticData.SessionRecords[recordName]);
         }
 
-        public void AddValueToRecord(RecordName recordName, float value)
+        public void AddValueToRecord(StatisticData.RecordName recordName, float value)
         {
             if (value == 0f) return;
 
@@ -58,22 +56,22 @@ namespace smApplication.Scripts.Main.Services
             RecordChanged?.Invoke(recordName, _statisticData.SessionRecords[recordName]);
         }
 
-        public float GetFloatValue(RecordName recordName, FormatType formatType = FormatType.Common)
+        public float GetFloatValue(StatisticData.RecordName recordName, StatisticData.FormatType formatType = StatisticData.FormatType.Common)
         {
             return formatType switch
             {
-                FormatType.Common => float.Parse(_statisticData.CommonRecords[recordName]),
-                FormatType.Session => float.Parse(_statisticData.SessionRecords[recordName]),
+                StatisticData.FormatType.Common => float.Parse(_statisticData.CommonRecords[recordName]),
+                StatisticData.FormatType.Session => float.Parse(_statisticData.SessionRecords[recordName]),
                 _ => throw new ArgumentOutOfRangeException(nameof(formatType), formatType, null)
             };
         }
         
-        public int GetIntegerValue(RecordName recordName, FormatType formatType = FormatType.Common)
+        public int GetIntegerValue(StatisticData.RecordName recordName, StatisticData.FormatType formatType = StatisticData.FormatType.Common)
         {
             return formatType switch
             {
-                FormatType.Common => int.Parse(_statisticData.CommonRecords[recordName]),
-                FormatType.Session => int.Parse(_statisticData.SessionRecords[recordName]),
+                StatisticData.FormatType.Common => int.Parse(_statisticData.CommonRecords[recordName]),
+                StatisticData.FormatType.Session => int.Parse(_statisticData.SessionRecords[recordName]),
                 _ => throw new ArgumentOutOfRangeException(nameof(formatType), formatType, null)
             };
         }
@@ -96,21 +94,21 @@ namespace smApplication.Scripts.Main.Services
         
         public void CalculateSessionDuration()
         {
-            var sessionDuration = GetFloatValue(RecordName.LastGameSessionDuration, FormatType.Session);
-            var longestSession = GetFloatValue(RecordName.LongestGameSessionDuration);
-            var averageSession = GetFloatValue(RecordName.AverageGameSessionDuration);
+            var sessionDuration = GetFloatValue(StatisticData.RecordName.LastGameSessionDuration, StatisticData.FormatType.Session);
+            var longestSession = GetFloatValue(StatisticData.RecordName.LongestGameSessionDuration);
+            var averageSession = GetFloatValue(StatisticData.RecordName.AverageGameSessionDuration);
             longestSession = Mathf.Max(longestSession, sessionDuration);
             averageSession = averageSession == 0 ? sessionDuration : (averageSession * 3 + sessionDuration) / 4f;
-            SetRecord(RecordName.LongestGameSessionDuration, longestSession.ToString());
-            SetRecord(RecordName.AverageGameSessionDuration, averageSession.ToString());
+            SetRecord(StatisticData.RecordName.LongestGameSessionDuration, longestSession.ToString());
+            SetRecord(StatisticData.RecordName.AverageGameSessionDuration, averageSession.ToString());
         }
 
         public void SetScores(int value)
         {
-            SetRecord(RecordName.Scores, value.ToString());
-            var maxScores = GetIntegerValue(RecordName.MaxScores);
+            SetRecord(StatisticData.RecordName.Scores, value.ToString());
+            var maxScores = GetIntegerValue(StatisticData.RecordName.MaxScores);
             maxScores = Mathf.Max(maxScores, maxScores);
-            SetRecord(RecordName.MaxScores, maxScores.ToString());
+            SetRecord(StatisticData.RecordName.MaxScores, maxScores.ToString());
         }
 
         public void EndGameDataSaving()
@@ -119,7 +117,7 @@ namespace smApplication.Scripts.Main.Services
             SaveToFile();
         }
         
-        private void SetRecord(RecordName recordName, string value)
+        private void SetRecord(StatisticData.RecordName recordName, string value)
         {
             _statisticData.CommonRecords[recordName] = value;
             _statisticData.SessionRecords[recordName] = value;
@@ -139,7 +137,7 @@ namespace smApplication.Scripts.Main.Services
 
                 // if (_gameManager.ActiveStateEquals<GameStates.PlayNewGame>())
                 {
-                    AddValueToRecord(RecordName.LastGameSessionDuration, delta);
+                    AddValueToRecord(StatisticData.RecordName.LastGameSessionDuration, delta);
                 }
 
                 delta = 0f;

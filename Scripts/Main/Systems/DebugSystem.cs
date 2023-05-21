@@ -1,8 +1,9 @@
-﻿using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Events.Audio;
-using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Events.Audio;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class DebugSystem : BaseSystem
     {
@@ -12,8 +13,8 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _screenService = Services.Services.Get<ScreenService>();
-            _audioService = Services.Services.Get<AudioService>();
+            _screenService = Services.Get<ScreenService>();
+            _audioService = Services.Get<AudioService>();
         }
 
         public override void AddEventHandlers()

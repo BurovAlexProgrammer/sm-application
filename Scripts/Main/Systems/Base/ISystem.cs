@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using smApplication.Scripts.Main.Events;
+using sm_application.Scripts.Main.Events;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public interface ISystem
     {
@@ -12,5 +12,6 @@ namespace smApplication.Scripts.Main.Systems
         void RemoveListener<T>();
         void AddEventHandlers();
         void RemoveEventHandlers();
+        void Dispose();
     }
 }

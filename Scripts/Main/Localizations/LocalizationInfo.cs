@@ -1,6 +1,6 @@
 using System;
 
-namespace smApplication.Scripts.Main.Localizations
+namespace sm_application.Scripts.Main.Localizations
 {
     public class LocalizationInfo: IEquatable<LocalizationInfo>
     {

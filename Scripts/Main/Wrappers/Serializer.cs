@@ -3,7 +3,7 @@ using smApplication.Scripts.Extension;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Wrappers
+namespace sm_application.Scripts.Main.Wrappers
 {
     public static class Serializer
     {

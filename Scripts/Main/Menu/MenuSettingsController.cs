@@ -1,28 +1,28 @@
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Settings;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Menu
+namespace sm_application.Scripts.Main.Menu
 {
     public class MenuSettingsController : MonoBehaviour
     {
         public void Apply()
         {
-            var settingService = Services.Services.Get<SettingsService>();
+            var settingService = Services.Get<SettingsService>();
             settingService.Save();
             settingService.Apply();
         }
         
         public void Save()
         {
-            var settingService = Services.Services.Get<SettingsService>();
+            var settingService = Services.Get<SettingsService>();
             settingService.Save();
             settingService.Apply();
         }
         
         public void ResetToDefault()
         {
-            var settingService = Services.Services.Get<SettingsService>();
+            var settingService = Services.Get<SettingsService>();
             settingService.Restore();
             settingService.Apply();
         }

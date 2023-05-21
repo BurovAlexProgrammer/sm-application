@@ -1,11 +1,11 @@
-﻿using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Wrappers;
+﻿using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Wrappers;
+using smApplication.Scripts.Extension;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class ControlSystem : BaseSystem, IPointerClickHandler
     {
@@ -14,15 +14,15 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _controlService = Services.Services.Get<ControlService>();
+            _controlService = Services.Get<ControlService>();
             _controlService.Controls.Enable();
             _controlService.BindAction(BindActions.Started, OnPressInternalProfile);
         }
 
-        public override void OnDispose()
+        public override void Dispose()
         {
             _controlService.UnbindAction(BindActions.Started, OnPressInternalProfile);
-            base.OnDispose();
+            base.Dispose();
         }
 
         public override void RemoveEventHandlers()

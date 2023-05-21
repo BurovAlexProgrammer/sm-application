@@ -1,12 +1,11 @@
 ﻿using System;
-using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Wrappers;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Wrappers;
+using smApplication.Scripts.Extension;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class AudioService : IService, IConstructInstaller
     {

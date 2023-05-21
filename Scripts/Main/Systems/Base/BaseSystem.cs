@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using smApplication.Scripts.Main.Events;
+using sm_application.Scripts.Main.Events;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public abstract class BaseSystem : ISystem
     {
@@ -14,13 +14,8 @@ namespace smApplication.Scripts.Main.Systems
         {
         }
 
-        public virtual void OnDispose()
+        public virtual void Dispose()
         {
-        }
-
-        ~BaseSystem()
-        {
-            OnDispose();
         }
 
         public void AddListener<T>(Action<BaseEvent> callback) where T : BaseEvent

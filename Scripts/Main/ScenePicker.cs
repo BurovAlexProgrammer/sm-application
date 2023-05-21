@@ -1,6 +1,6 @@
 using System;
 
-namespace smApplication.Scripts.Main
+namespace sm_application.Scripts.Main
 {
     [Serializable]
     public class ScenePicker

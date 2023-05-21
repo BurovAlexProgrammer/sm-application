@@ -1,4 +1,4 @@
-using smApplication.Scripts.Main.Localizations;
+using sm_application.Scripts.Main.Localizations;
 using UnityEditor;
 using UnityEngine;
 

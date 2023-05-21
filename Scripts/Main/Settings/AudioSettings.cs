@@ -1,7 +1,7 @@
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Settings
+namespace sm_application.Scripts.Main.Settings
 {
     [CreateAssetMenu(menuName = "Custom/Settings/Audio Settings")]
         public class AudioSettings : SettingsSO

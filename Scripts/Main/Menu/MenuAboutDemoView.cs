@@ -1,10 +1,10 @@
-﻿using smApplication.Scripts.Main.UI;
+﻿using sm_application.Scripts.Main.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace smApplication.Scripts.Main.Menu
+namespace sm_application.Scripts.Main.Menu
 {
     public class MenuAboutDemoView : MenuView
     {

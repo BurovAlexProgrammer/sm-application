@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Game
+namespace sm_application.Scripts.Main.Game
 {
     public class GizmoItem : MonoBehaviour
     {

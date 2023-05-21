@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.Wrappers
+namespace sm_application.Scripts.Main.Wrappers
 {
     public static class Log
     {

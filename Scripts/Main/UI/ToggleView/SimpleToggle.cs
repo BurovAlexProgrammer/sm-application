@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace smApplication.Scripts.Main.UI.ToggleView
+namespace sm_application.Scripts.Main.UI.ToggleView
 {
     [RequireComponent(typeof(UnityEngine.UI.Toggle))]
     public class SimpleToggle : MonoBehaviour

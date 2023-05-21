@@ -1,8 +1,9 @@
-﻿using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Events.Audio;
-using smApplication.Scripts.Main.Services;
+﻿using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Events.Audio;
+using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.Service;
 
-namespace smApplication.Scripts.Main.Systems
+namespace sm_application.Scripts.Main.Systems
 {
     public class AudioSystem : BaseSystem
     {
@@ -10,7 +11,7 @@ namespace smApplication.Scripts.Main.Systems
         public override void Init()
         {
             base.Init();
-            _audioService = Services.Services.Get<AudioService>();
+            _audioService = Services.Get<AudioService>();
             new AudioSystemInitializedEvent().Fire();
         }
 

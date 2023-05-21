@@ -1,13 +1,14 @@
 using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
 using smApplication.Scripts.UI;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Service;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace smApplication.Scripts.Main.UI.Window
+namespace sm_application.Scripts.Main.UI.Window
 {
     public class WindowGamePause : WindowView
     {
@@ -25,9 +26,9 @@ namespace smApplication.Scripts.Main.UI.Window
 
         private void Awake()
         {
-            _gameStateService = Services.Services.Get<GameStateService>();
-            _settingsService = Services.Services.Get<SettingsService>();
-            _controlService = Services.Services.Get<ControlService>();
+            _gameStateService = Services.Get<GameStateService>();
+            _settingsService = Services.Get<SettingsService>();
+            _controlService = Services.Get<ControlService>();
             _controlService.Controls.Menu.Pause.BindAction(BindActions.Started, ReturnGame);
             _restartGameButton.onClick.AddListener(RestartGame);
             _returnGameButton.onClick.AddListener(ReturnGame);

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using smApplication.Scripts.Extension;
-using smApplication.Scripts.Main.Localizations;
-using smApplication.Scripts.Main.Services;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Localizations;
+using smApplication.Scripts.Extension;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class LocalizationService : IService, IConstruct
     {

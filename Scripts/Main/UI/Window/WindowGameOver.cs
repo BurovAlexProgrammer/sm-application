@@ -1,16 +1,17 @@
-using smApplication.Scripts.Main.Events;
-using smApplication.Scripts.Main.Services;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Service;
 using smApplication.Scripts.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using sm_application.Scripts.Main.Service;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static smApplication.Scripts.Extension.Common;
-using static smApplication.Scripts.Main.DTO.StatisticData.FormatType;
-using static smApplication.Scripts.Main.DTO.StatisticData.RecordName;
+using static sm_application.Scripts.Main.DTO.StatisticData.FormatType;
+using static sm_application.Scripts.Main.DTO.StatisticData.RecordName;
 
-namespace smApplication.Scripts.Main.UI.Window
+namespace sm_application.Scripts.Main.UI.Window
 {
     public class WindowGameOver : WindowView
     {
@@ -50,7 +51,7 @@ namespace smApplication.Scripts.Main.UI.Window
 
         public override async UniTask Show()
         {
-            var statisticService = Services.Services.Get<StatisticService>(); 
+            var statisticService = Services.Get<StatisticService>(); 
             _buttonPanel.localScale = _buttonPanel.localScale.SetAsNew(x: 0f);
             _buttonPanel.SetScale(x: 0f);
             const float duration = 0.8f;

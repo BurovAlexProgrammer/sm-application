@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using smApplication.Scripts.Main.Services;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class Services
     {
@@ -63,6 +62,10 @@ namespace smApplication.Scripts.Main.Services
         {
             foreach (var type in _registeredServices.Keys.ToList())
             {
+                if (_registeredServices[type] is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
                 _registeredServices[type] = null;
             }
             

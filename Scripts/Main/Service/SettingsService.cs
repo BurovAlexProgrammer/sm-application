@@ -1,9 +1,8 @@
+using System;
 using System.Collections.Generic;
-using smApplication.Scripts.Main.Services;
-using smApplication.Scripts.Main.Settings;
-using AudioSettings = smApplication.Scripts.Main.Settings.AudioSettings;
+using sm_application.Scripts.Main.Settings;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class SettingsService : IService, IConstructInstaller
     {

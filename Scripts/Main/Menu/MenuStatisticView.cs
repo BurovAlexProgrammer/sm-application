@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using smApplication.Scripts.Main.UI;
+using sm_application.Scripts.Main.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using static smApplication.Scripts.Extension.Common;
-using static smApplication.Scripts.Main.DTO.StatisticData;
+using static sm_application.Scripts.Main.DTO.StatisticData;
 
-namespace smApplication.Scripts.Main.Menu
+namespace sm_application.Scripts.Main.Menu
 {
     public class MenuStatisticView : MenuView
     {

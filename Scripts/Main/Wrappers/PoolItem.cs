@@ -4,7 +4,7 @@ using smApplication.Scripts.Extension;
 using UnityEngine;
 using Object = System.Object;
 
-namespace smApplication.Scripts.Main.Wrappers
+namespace sm_application.Scripts.Main.Wrappers
 {
     public sealed class PoolItem
     {

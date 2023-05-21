@@ -3,7 +3,7 @@ using smApplication.Scripts.Extension;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace smApplication.Scripts.Main.Services
+namespace sm_application.Scripts.Main.Service
 {
     public class ControlService: IService, IConstructInstaller
     {
