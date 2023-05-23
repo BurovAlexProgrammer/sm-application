@@ -1,17 +1,16 @@
 using System;
 using System.Linq;
-using sm_application.Scripts.Main.DTO.Enums;
-using sm_application.Scripts.Main.Events;
-using sm_application.Scripts.Main.Service;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using sm_application.Scripts.Main.Service;
+using sm_application.Scripts.Main.DTO.Enums;
+using sm_application.Scripts.Main.Events;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEditor;
 using UnityEngine;
 
 namespace sm_application.Scripts.Main.Service
 {
-    public class GameStateService : IService, IConstruct
+    public class GameStateService : IService
     {
         public bool IsGamePause;
         public bool IsGameOver;
@@ -23,18 +22,7 @@ namespace sm_application.Scripts.Main.Service
 
         public GameState CurrentState => _currentState;
         public bool IsMenuMode => _isMenuMode;
-
-
-        public async void Construct()
-        {
-            _sceneLoader = Services.Get<SceneLoaderService>();
-
-            if (_sceneLoader.IsCustomScene())
-            {
-                await _sceneLoader.LoadSceneAsync(SceneName.Boot);
-                SetState(GameState.CustomScene);
-            }
-        }
+        
 
         public void SetPause(bool value)
         {
@@ -46,7 +34,7 @@ namespace sm_application.Scripts.Main.Service
         {
             if (_currentState == newState)
             {
-                Debug.Log($"GameState: {newState.ToString()} (Already entered, skipped)");
+                Log.Info($"GameState: {newState.ToString()} (Already entered, skipped)");
                 return;
             }
             
@@ -58,7 +46,7 @@ namespace sm_application.Scripts.Main.Service
             var color = "default";
 #endif
 
-            Debug.Log($"GameState: <color={color}> {newState.ToString()}</color>. {DateTime.Now.ToString("hh:mm:ss")}");
+            Log.Info($"GameState: <color={color}> {newState.ToString()}</color>. {DateTime.Now.ToString("hh:mm:ss")}");
         }
         
         public void RestartGame()
@@ -69,7 +57,7 @@ namespace sm_application.Scripts.Main.Service
         public void QuitGame()
         {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
 #else
                 Application.Quit();
 #endif

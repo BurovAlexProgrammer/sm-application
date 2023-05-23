@@ -1,8 +1,7 @@
 using System;
-using smApplication.Scripts.Extension;
-using sm_application.Scripts.Main.DTO.Enums;
-using sm_application.Scripts.Main.Service;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.DTO.Enums;
+using smApplication.Scripts.Extension;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
@@ -20,14 +19,13 @@ namespace sm_application.Scripts.Main.Service
         public void Construct()
         {
             _bootScene = SceneManager.GetSceneByName("Boot");
-            _initialScene = SceneManager.GetActiveScene();
+            _currentScene = _initialScene = SceneManager.GetActiveScene();
         }
         
         public async UniTask LoadSceneAsync(SceneName sceneName)
         {
-           // var sceneName = GetSceneName(scene);
             await UniTask.WhenAll(PrepareScene(sceneName));
-            ActivatePreparedScene();
+            SwitchToPreparedScene();
         }
 
         public async void ReloadActiveScene()
@@ -69,7 +67,7 @@ namespace sm_application.Scripts.Main.Service
             _preparedScene.SetActive(false);
         }
 
-        private void ActivatePreparedScene()
+        private void SwitchToPreparedScene()
         {
             _preparedScene.SetActive(true);
             SceneManager.SetActiveScene(_preparedScene);

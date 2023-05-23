@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEngine;
 
 namespace sm_application.Scripts.Main.Localizations
@@ -43,7 +44,7 @@ namespace sm_application.Scripts.Main.Localizations
                 if (localizedItem == null) continue;
                 if (_localizedItems.ContainsKey(localizedItem.Key))
                 {
-                    Debug.Log($"Key {localizedItem.Key} is exist in a dictionary already.");
+                    Log.Info($"Key {localizedItem.Key} is exist in a dictionary already.");
                     continue;
                 }
                 _localizedItems.Add(localizedItem.Key, localizedItem);

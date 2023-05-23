@@ -5,6 +5,7 @@ using System.Linq;
 using sm_application.Scripts.Main.Localizations;
 using UnityEngine;
 using Newtonsoft.Json;
+using sm_application.Scripts.Main.Wrappers;
 
 namespace smApplication.Scripts.Extension.Editor.LocalizationTools
 {
@@ -45,7 +46,7 @@ namespace smApplication.Scripts.Extension.Editor.LocalizationTools
                 localization.LocalizedItems.Remove(removeKey);
                 
                 SaveLocalization(localization);
-                Debug.Log($"Key '{removeKey}' removed for localization '{localization.Info.Name}'.");
+                Log.Info($"Key '{removeKey}' removed for localization '{localization.Info.Name}'.");
             }
         }
         
@@ -88,7 +89,7 @@ namespace smApplication.Scripts.Extension.Editor.LocalizationTools
                 }
                 
                 SaveLocalization(localization);
-                Debug.Log($"Originals for {localization.Info.Name} updated.");
+                Log.Info($"Originals for {localization.Info.Name} updated.");
             }
         }
         

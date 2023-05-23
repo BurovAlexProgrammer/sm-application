@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using sm_application.Scripts.Main.Localizations;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,7 +47,7 @@ namespace smApplication.Scripts.Extension.Editor.LocalizationTools
 
         private void Init()
         {
-            Debug.Log("Init");
+            Log.Info("Init");
             _localizations = LocalizationTools.Instance.Localizations;
             _originalLocalization = LocalizationTools.Instance.OriginalLocalization;
             _localeNames = _localizations.Values.Select(x => x.Info.Name).ToArray();
@@ -212,7 +213,7 @@ namespace smApplication.Scripts.Extension.Editor.LocalizationTools
 
         private void SwitchLocale(int newIndex)
         {
-            Debug.Log("SwitchLocale");
+            Log.Info("SwitchLocale");
             _selectedLocaleIndex = newIndex;
             var selectedLocalization = _localizations.Where((x, i) => i == newIndex).Single().Value;
             _selectedLocalizationInstance = new Localization(selectedLocalization);

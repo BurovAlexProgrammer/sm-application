@@ -3,18 +3,24 @@ using sm_application.Scripts.Main.Events;
 using sm_application.Scripts.Main.Service;
 using sm_application.Scripts.Main.Wrappers;
 using Cysharp.Threading.Tasks;
-using sm_application.Scripts.Main.Service;
 
 namespace sm_application.Scripts.Main.Systems
 {
     public class SceneLoaderSystem : BaseSystem
     {
         private SceneLoaderService _sceneLoader;
+        private GameStateService _gameStateService;
 
         public override void Init()
         {
             base.Init();
             _sceneLoader = Services.Get<SceneLoaderService>();
+            _gameStateService = Services.Get<GameStateService>();
+            
+            if (_sceneLoader.IsCustomScene())
+            {
+                _gameStateService.SetState(GameState.CustomScene);
+            }
         }
         
         public override void RemoveEventHandlers()
@@ -46,6 +52,10 @@ namespace sm_application.Scripts.Main.Systems
         private void StartupSystemsInitialized(BaseEvent evnt)
         {
             Log.Info("Initialized");
+            if (_gameStateService.CurrentStateIs(GameState.CustomScene))
+            {
+                return;
+            }
             _sceneLoader.LoadSceneAsync(SceneName.Intro).Forget();
         }
     }

@@ -4,6 +4,7 @@ using sm_application.Scripts.Main.Events;
 using sm_application.Scripts.Main.Game;
 using sm_application.Scripts.Main.Service;
 using sm_application.Scripts.Main.Systems;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEngine;
 
 namespace sm_application.Scripts.Main.Installers
@@ -18,7 +19,7 @@ namespace sm_application.Scripts.Main.Installers
 
         public void Awake() 
         {
-            Debug.Log("Startup");
+            Log.Info("Startup");
 
             AppContext.Instantiate();
             DOTween.SetTweensCapacity(1000, 50);
@@ -45,12 +46,6 @@ namespace sm_application.Scripts.Main.Installers
             StartCoroutine(LateStartup());
         }
 
-        private void OnApplicationQuit()
-        {
-            // SystemsService.Dispose();
-            // Services.Dispose();
-        }
-        
         private IEnumerator LateStartup()
         {
             yield return null;

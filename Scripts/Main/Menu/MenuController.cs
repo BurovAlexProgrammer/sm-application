@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using smApplication.Scripts.Extension.Attributes;
 using sm_application.Scripts.Main.UI;
 using Cysharp.Threading.Tasks;
+using sm_application.Scripts.Main.Wrappers;
 using UnityEngine;
 
 namespace sm_application.Scripts.Main.Menu
@@ -48,7 +49,7 @@ namespace sm_application.Scripts.Main.Menu
 
         protected virtual async UniTask EnterState(MenuStates newState)
         {
-            Debug.Log("MenuState Enter: " + newState, this);
+            Log.Info($"MenuState Enter: <color=orange>{newState}</color>", this);
             var menu = GetMenu(newState);
             await menu.Show();
             menu.Enable();
@@ -56,7 +57,7 @@ namespace sm_application.Scripts.Main.Menu
 
         protected virtual async UniTask ExitState(MenuStates oldState)
         {
-            Debug.Log("MenuState ExitState: " + oldState, this);
+            Log.Info($"MenuState ExitState: <color=orange>{oldState}</color>", this);
             DisableAllMenus();
             await HideAllMenus();
         }

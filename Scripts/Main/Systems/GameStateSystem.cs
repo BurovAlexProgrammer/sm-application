@@ -3,7 +3,6 @@ using sm_application.Scripts.Main.Events;
 using sm_application.Scripts.Main.Service;
 using sm_application.Scripts.Main.Wrappers;
 using smApplication.Scripts.Extension;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace sm_application.Scripts.Main.Systems
@@ -12,6 +11,7 @@ namespace sm_application.Scripts.Main.Systems
     {
         private GameStateService _gameStateService;
         private ControlService _controlService;
+        private SceneLoaderService _sceneLoader;
         private bool _transaction;
         
         public override void Init()
@@ -19,6 +19,7 @@ namespace sm_application.Scripts.Main.Systems
             base.Init();
             _gameStateService = Services.Get<GameStateService>();
             _controlService = Services.Get<ControlService>();
+            _sceneLoader = Services.Get<SceneLoaderService>();
             _controlService.Controls.Player.Pause.BindAction(BindActions.Started, PauseGame);
         }
 
@@ -76,6 +77,10 @@ namespace sm_application.Scripts.Main.Systems
 
         private async void StartupSystemsInitialized(BaseEvent baseEvent)
         {
+            if (_gameStateService.CurrentStateIs(GameState.CustomScene))
+            {
+                return;
+            }
             _gameStateService.SetState(GameState.Intro);
             // await 3f.WaitInSeconds();
             await 0.3f.WaitInSeconds();
@@ -87,7 +92,7 @@ namespace sm_application.Scripts.Main.Systems
             if (_transaction) return;
             if (_gameStateService.CurrentStateIsNot(GameState.PlayGame, GameState.CustomScene)) return;
 
-            Debug.Log("Game paused to menu.");
+            Log.Info("Game paused to menu.");
 
             _transaction = true;
             _gameStateService.SetPause(true);
@@ -106,7 +111,7 @@ namespace sm_application.Scripts.Main.Systems
             if (_gameStateService.IsGameOver) return;
             if (_gameStateService.CurrentStateIsNot(GameState.PlayGame, GameState.CustomScene)) return;
 
-            Debug.Log("Game returned from pause.");
+            Log.Info("Game returned from pause.");
             
             _transaction = true;
             _gameStateService.SetPause(false);
