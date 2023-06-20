@@ -9,12 +9,16 @@ namespace sm_application.Scripts.Main.Game
         public static Transform Hierarchy;
         public static Transform ServicesHierarchy;
 
+        private static bool _isExist;
+        public static bool IsExist => _isExist;
+
         public static void Instantiate()
         {
             Hierarchy = new GameObject() {name = "AppContext"}.transform;
             Hierarchy.gameObject.AddComponent<AppContext>();
             ServicesHierarchy = new GameObject() {name = "Services"}.transform;
             ServicesHierarchy.SetParent(Hierarchy);
+            _isExist = true;
         }
         
         private void Awake()
@@ -37,6 +41,7 @@ namespace sm_application.Scripts.Main.Game
         {
             SystemsService.Dispose();
             Services.Dispose();
+            _isExist = false;
         }
     }
 }

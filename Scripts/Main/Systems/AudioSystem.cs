@@ -15,6 +15,14 @@ namespace sm_application.Scripts.Main.Systems
             new AudioSystemInitializedEvent().Fire();
         }
 
+        public override void RemoveEventHandlers()
+        {
+            RemoveListener<PlayMenuMusicEvent>();
+            RemoveListener<PlayGameEvent>();
+            RemoveListener<ShowMainMenuEvent>();
+            base.RemoveEventHandlers();
+        }
+
         public override void AddEventHandlers()
         {
             base.AddEventHandlers();
