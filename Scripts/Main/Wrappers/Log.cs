@@ -5,6 +5,11 @@ namespace sm_application.Scripts.Main.Wrappers
 {
     public static class Log
     {
+        public static void ErrorUnknown()
+        {
+            Debug.LogError("Unknown error");
+        }
+        
         public static void Error(string message, UnityEngine.Object context = null, Type type = Type.Default)
         {
             if (context == null)

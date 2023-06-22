@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Duck.Http;
 using Duck.Http.Service.Unity;
@@ -22,11 +24,13 @@ namespace sm_application.Scripts.Main.Installers
         [SerializeField] private AudioServiceInstaller _audioServiceInstaller;
 
         public event Action OnApplicationInitialized;
+
+        public event Func<string, string> StrFunc;
         
-        public void Awake()
+        
+        public async void Awake()
         {
             AppContext.Instantiate();
-            Http.Init(new UnityHttpService());
             DOTween.SetTweensCapacity(1000, 50);
             Services.Register<ControlService>(_controlServiceInstaller);
             Services.Register<ScreenService>(_screenServiceInstaller);
@@ -40,7 +44,7 @@ namespace sm_application.Scripts.Main.Installers
             SystemsService.Bind<ScreenSystem>();
             SystemsService.Bind<DebugSystem>();
             SystemsService.Bind<AudioSystem>();
-            
+
             new StartupSystemsInitializedEvent().Fire();
             StartCoroutine(LateStartup());
         }
