@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
-using Duck.Http;
-using Duck.Http.Service.Unity;
 using sm_application.Scripts.Main.Events;
 using sm_application.Scripts.Main.Service;
 using sm_application.Scripts.Main.Systems;
@@ -12,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using AppContext = sm_application.Scripts.Main.Game.AppContext;
 
-namespace sm_application.Scripts.Main.Installers
+namespace sm_application.Scripts.Main.Startup
 {
     public class AppContextInstaller : MonoBehaviour
     {
@@ -23,15 +19,11 @@ namespace sm_application.Scripts.Main.Installers
         [SerializeField] private SettingsServiceInstaller _settingsServiceInstaller;
         [SerializeField] private AudioServiceInstaller _audioServiceInstaller;
 
-        public event Action OnApplicationInitialized;
-
-        public event Func<string, string> StrFunc;
-        
-        
-        public async void Awake()
+        public void Awake()
         {
             AppContext.Instantiate();
             DOTween.SetTweensCapacity(1000, 50);
+            Services.Register<HardwareService>();
             Services.Register<ControlService>(_controlServiceInstaller);
             Services.Register<ScreenService>(_screenServiceInstaller);
             Services.Register<PoolService>();

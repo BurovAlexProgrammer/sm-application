@@ -22,17 +22,24 @@ namespace sm_application.Scripts.Main.Systems
             _screenService.OnDebugProfilerToggleSwitched -= OnDebugProfilerToggleSwitched;
             base.Dispose();
         }
-
-        private void OnDebugProfilerToggleSwitched(bool value)
-        {
-            new ToggleInternalProfileEvent().Fire();
-        }
-
+        
         public override void AddEventHandlers()
         {
             base.AddEventHandlers();
             AddListener<ToggleInternalProfileEvent>(OnInternalProfileDisplayToggle);
             AddListener<ControlModeChangedEvent>(ControlModeChanged);
+        }
+
+        public override void RemoveEventHandlers()
+        {
+            base.RemoveEventHandlers();
+            RemoveListener<ToggleInternalProfileEvent>();
+            RemoveListener<ControlModeChangedEvent>();
+        }
+
+        private void OnDebugProfilerToggleSwitched(bool value)
+        {
+            new ToggleInternalProfileEvent().Fire();
         }
 
         private void ControlModeChanged(BaseEvent baseEvent)
@@ -43,17 +50,10 @@ namespace sm_application.Scripts.Main.Systems
                 _screenService.ActiveProfileVolume<DepthOfField>(!modeChangedEvent.MenuMode);
             }
         }
-
-        public override void RemoveEventHandlers()
-        {
-            base.RemoveEventHandlers();
-            RemoveListener<ToggleInternalProfileEvent>();
-        }
-
+        
         private void OnInternalProfileDisplayToggle(BaseEvent baseEvent)
         {
             _screenService.ToggleDisplayProfiler();
         }
-
     }
 }
