@@ -1,10 +1,10 @@
 using System;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.UI
+namespace sm_application.UI
 {
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]

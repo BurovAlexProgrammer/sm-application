@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using sm_application.Scripts.Main.Localizations;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
+using sm_application.Localizations;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class LocalizationService : IService, IConstruct
     {

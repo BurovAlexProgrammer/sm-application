@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace sm_application.Scripts.Main.Game
+namespace sm_application.Game
 {
     [ExecuteAlways]
     [RequireComponent(typeof(MeshRenderer))]

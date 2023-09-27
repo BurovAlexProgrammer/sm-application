@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using sm_application.Scripts.Main.Localizations;
 using Cysharp.Threading.Tasks;
-using sm_application.Scripts.Main.Wrappers;
+using sm_application.Localizations;
+using sm_application.Wrappers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace smApplication.Scripts.Extension.Editor.LocalizationTools
+namespace sm_application.Extension.Editor.LocalizationTools
 {
     public class LocalizationToolsWindow : EditorWindow
     {

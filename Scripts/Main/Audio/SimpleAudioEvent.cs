@@ -1,9 +1,8 @@
 ﻿using System;
-using smApplication.Scripts.Extension;
-using smApplication.Scripts.Extension.Attributes;
+using sm_application.Extension;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Audio
+namespace sm_application.Audio
 {
     [CreateAssetMenu(menuName = "Custom/Audio/Simple Audio Event")]
     public class SimpleAudioEvent : AudioEvent

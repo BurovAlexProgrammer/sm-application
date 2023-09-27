@@ -1,4 +1,4 @@
-﻿namespace sm_application.Scripts.Main.Game
+﻿namespace sm_application.Game
 {
     public class GizmoItemExplosion : GizmoItem
     {

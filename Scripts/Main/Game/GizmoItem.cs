@@ -1,8 +1,8 @@
-﻿using smApplication.Scripts.Extension;
+﻿using sm_application.Extension;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Game
+namespace sm_application.Game
 {
     public class GizmoItem : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace sm_application.Scripts.Main.Game
 
         private void Start()
         {
-            _ = DestroyAfter(ShowTime);
+            DestroyAfter(ShowTime).Forget();
         }
 
         private async UniTask DestroyAfter(float time)

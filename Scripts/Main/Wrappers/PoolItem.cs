@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using UnityEngine;
 using Object = System.Object;
 
-namespace sm_application.Scripts.Main.Wrappers
+namespace sm_application.Wrappers
 {
     public sealed class PoolItem
     {

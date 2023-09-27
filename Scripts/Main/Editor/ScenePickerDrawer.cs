@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace sm_application.Scripts.Main.Editor
+namespace sm_application.Editor
 {
     [CustomPropertyDrawer(typeof(ScenePicker))]
     public class ScenePickerDrawer : PropertyDrawer

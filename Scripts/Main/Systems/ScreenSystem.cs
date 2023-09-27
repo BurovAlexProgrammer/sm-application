@@ -1,8 +1,8 @@
-﻿using sm_application.Scripts.Main.Events;
-using sm_application.Scripts.Main.Service;
+﻿using sm_application.Events;
+using sm_application.Service;
 using UnityEngine.Rendering.Universal;
 
-namespace sm_application.Scripts.Main.Systems
+namespace sm_application.Systems
 {
     public class ScreenSystem : BaseSystem
     {

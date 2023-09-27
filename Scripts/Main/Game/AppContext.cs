@@ -1,8 +1,8 @@
-﻿using sm_application.Scripts.Main.Service;
-using smApplication.Scripts.Extension;
+﻿using sm_application.Extension;
+using sm_application.Service;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Game
+namespace sm_application.Game
 {
     public class AppContext : MonoBehaviour
     {

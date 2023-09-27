@@ -1,6 +1,6 @@
 using System;
 
-namespace smApplication.Scripts.Extension
+namespace sm_application.Extension
 {
     public static partial class Common
     {

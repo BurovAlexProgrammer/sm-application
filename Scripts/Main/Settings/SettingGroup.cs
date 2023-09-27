@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using smApplication.Scripts.Extension;
-using sm_application.Scripts.Main.Service;
-using sm_application.Scripts.Main.Wrappers;
+using sm_application.Extension;
+using sm_application.Service;
+using sm_application.Wrappers;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Settings
+namespace sm_application.Settings
 {
     public interface ISettingGroup
     {

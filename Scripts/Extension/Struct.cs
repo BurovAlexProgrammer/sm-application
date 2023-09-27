@@ -1,11 +1,14 @@
 using System;
 using System.Threading;
-using smApplication.Scripts.Extension.Attributes;
 using Cysharp.Threading.Tasks;
+using sm_application.Extension;
 using UnityEngine;
 using Random = UnityEngine.Random;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-namespace smApplication.Scripts.Extension
+namespace sm_application.Extension
 {
     public static partial class Common
     {
@@ -61,6 +64,16 @@ namespace smApplication.Scripts.Extension
         public static void Toggle(this ref bool value)
         {
             value = !value;
-        }   
+        }
+
+        public static string ThemeColorHex(string darkThemeColorHex, string lightThemeColorHex)
+        {
+#if UNITY_EDITOR
+            var color = EditorGUIUtility.isProSkin ? darkThemeColorHex : lightThemeColorHex;
+#else
+            var color = "default";
+#endif
+            return color;
+        }
     }
 }

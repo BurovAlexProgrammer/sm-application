@@ -1,11 +1,11 @@
-﻿using sm_application.Scripts.Main.Events;
-using sm_application.Scripts.Main.Service;
-using sm_application.Scripts.Main.Wrappers;
-using smApplication.Scripts.Extension;
+﻿using sm_application.Events;
+using sm_application.Extension;
+using sm_application.Service;
+using sm_application.Wrappers;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace sm_application.Scripts.Main.Systems
+namespace sm_application.Systems
 {
     public class ControlSystem : BaseSystem, IPointerClickHandler
     {

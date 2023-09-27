@@ -1,9 +1,8 @@
-using sm_application.Scripts.Main.Service;
-using sm_application.Scripts.Main.Service;
+using sm_application.Service;
 using TMPro;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Localizations
+namespace sm_application.Localizations
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextMeshProUILocalized : LocalizedTextComponent

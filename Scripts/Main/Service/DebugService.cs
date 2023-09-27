@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using sm_application.Scripts.Main.Service;
+using sm_application.Service;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class DebugService : IService, IConstructInstaller
     {

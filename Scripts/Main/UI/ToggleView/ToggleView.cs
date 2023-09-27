@@ -1,10 +1,10 @@
 using System;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace sm_application.Scripts.Main.UI.ToggleView
+namespace sm_application.UI.ToggleView
 {
     [RequireComponent(typeof(UnityEngine.UI.Toggle))]
     public class ToggleView : MonoBehaviour

@@ -1,4 +1,4 @@
-﻿namespace sm_application.Scripts.Main.Events.Audio
+﻿namespace sm_application.Events.Audio
 {
     public class AudioSystemInitializedEvent : BaseEvent
     {

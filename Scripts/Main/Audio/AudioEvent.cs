@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Audio
+namespace sm_application.Audio
 {
     public abstract class AudioEvent : ScriptableObject
     {

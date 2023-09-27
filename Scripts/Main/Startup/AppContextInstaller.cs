@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
-using sm_application.Scripts.Main.Events;
-using sm_application.Scripts.Main.Service;
-using sm_application.Scripts.Main.Systems;
+using sm_application.Events;
+using sm_application.Service;
+using sm_application.Systems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using AppContext = sm_application.Scripts.Main.Game.AppContext;
+using AppContext = sm_application.Game.AppContext;
 
-namespace sm_application.Scripts.Main.Startup
+namespace sm_application.Startup
 {
     public class AppContextInstaller : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace sm_application.Scripts.Main.Startup
 
         public void Awake()
         {
-            AppContext.Instantiate();
+            Game.AppContext.Instantiate();
             DOTween.SetTweensCapacity(1000, 50);
             Services.Register<HardwareService>();
             Services.Register<ControlService>(_controlServiceInstaller);

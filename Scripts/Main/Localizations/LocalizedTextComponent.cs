@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Localizations
+namespace sm_application.Localizations
 {
     public abstract class LocalizedTextComponent : MonoBehaviour
     {

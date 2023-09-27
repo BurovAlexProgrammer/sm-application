@@ -1,6 +1,6 @@
-using sm_application.Scripts.Main.Events;
+using sm_application.Events;
 
-namespace sm_application.Scripts.Main.HttpData
+namespace sm_application.HttpData
 {
     public struct HttpEndpointData
     {

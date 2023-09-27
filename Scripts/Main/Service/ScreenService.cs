@@ -1,14 +1,14 @@
 ﻿using System;
-using smApplication.Scripts.Extension;
-using sm_application.Scripts.Main.Settings;
-using sm_application.Scripts.Main.Wrappers;
+using sm_application.Extension;
+using sm_application.Settings;
+using sm_application.Wrappers;
 using Tayx.Graphy;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class ScreenService : IService, IConstructInstaller, IDisposable
     {

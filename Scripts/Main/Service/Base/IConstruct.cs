@@ -1,4 +1,4 @@
-﻿namespace sm_application.Scripts.Main.Service
+﻿namespace sm_application.Service
 {
     public interface IConstruct
     {

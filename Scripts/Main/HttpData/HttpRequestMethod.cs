@@ -1,4 +1,4 @@
-namespace sm_application.Scripts.Main.HttpData
+namespace sm_application.HttpData
 {
     public enum HttpRequestMethod
     {

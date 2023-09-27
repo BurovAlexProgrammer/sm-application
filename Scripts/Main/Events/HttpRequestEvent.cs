@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Events;
-using sm_application.Scripts.Main.HttpData;
+using sm_application.HttpData;
 using UnityEngine.Networking;
 
-namespace sm_application.Scripts.Main.Events
+namespace sm_application.Events
 {
     public class HttpRequestEvent : BaseEvent
     {

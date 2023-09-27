@@ -1,6 +1,6 @@
-﻿using sm_application.Scripts.Main.Service;
+﻿using sm_application.Service;
 
-namespace sm_application.Scripts.Main.Events
+namespace sm_application.Events
 {
     public abstract class BaseEvent
     {

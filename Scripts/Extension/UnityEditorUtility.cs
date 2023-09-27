@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 
-namespace smApplication.Scripts.Extension
+namespace sm_application.Extension
 {
     public class UnityEditorUtility
     {

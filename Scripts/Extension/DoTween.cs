@@ -5,7 +5,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
-namespace smApplication.Scripts.Extension
+namespace sm_application.Extension
 {
     public partial class Common
     {

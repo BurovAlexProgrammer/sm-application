@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class Services
     {

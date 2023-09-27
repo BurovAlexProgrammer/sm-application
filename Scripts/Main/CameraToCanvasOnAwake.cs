@@ -1,9 +1,8 @@
-using sm_application.Scripts.Main.Service;
 using JetBrains.Annotations;
-using sm_application.Scripts.Main.Service;
+using sm_application.Service;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main
+namespace sm_application
 {
     [RequireComponent(typeof(Canvas))]
     public class CameraToCanvasOnAwake : MonoBehaviour

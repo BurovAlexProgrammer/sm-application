@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace smApplication.Scripts.Extension.Attributes
+namespace sm_application.Extension
 {
     public class LabeledArrayAttribute : PropertyAttribute
     {

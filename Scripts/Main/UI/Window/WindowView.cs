@@ -1,10 +1,10 @@
 ﻿using System;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.UI.Window
+namespace sm_application.UI.Window
 {
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class WindowView : MonoBehaviour

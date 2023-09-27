@@ -1,4 +1,4 @@
-namespace sm_application.Scripts.Main.Localizations
+namespace sm_application.Localizations
 {
     public class LocalizedItem
     {

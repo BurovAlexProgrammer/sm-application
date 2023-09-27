@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using sm_application.Scripts.Main.Events;
-using sm_application.Scripts.Main.Systems;
-using sm_application.Scripts.Main.Wrappers;
-using UnityEditor;
+using sm_application.Events;
+using sm_application.Extension;
+using sm_application.Systems;
+using sm_application.Wrappers;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public static class SystemsService
     {
@@ -27,15 +27,9 @@ namespace sm_application.Scripts.Main.Service
 
         public static void FireEvent<T>(T firedEvent) where T : BaseEvent
         {
-            #if UNITY_EDITOR
-            var color = EditorGUIUtility.isProSkin ? "#00952A" : "#017020";
-            #else
-            var color = "default";
-            #endif
-            
+            var color = Common.ThemeColorHex("#00952A", "#017020");
             Log.Info($"Fired event <color={color}>{firedEvent.GetType().Name}</color>. {DateTime.Now.ToString("hh:mm:ss")}");
-            
-            
+
             foreach (var (key, system) in _systems)
             {
                 if (system.EventCallbacks.ContainsKey(firedEvent.GetType()) == false) continue;

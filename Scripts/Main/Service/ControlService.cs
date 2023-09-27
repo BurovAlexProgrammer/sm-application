@@ -1,9 +1,9 @@
 ﻿using System;
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class ControlService: IService, IConstructInstaller
     {

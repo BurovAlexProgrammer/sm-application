@@ -1,6 +1,6 @@
-﻿using sm_application.Scripts.Main.Settings;
+﻿using sm_application.Settings;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class SettingsServiceInstaller : BaseServiceInstaller
     {

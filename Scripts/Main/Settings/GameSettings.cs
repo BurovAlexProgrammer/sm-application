@@ -1,8 +1,8 @@
-using sm_application.Scripts.Main.Localizations;
-using sm_application.Scripts.Main.Service;
+using sm_application.Localizations;
+using sm_application.Service;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Settings
+namespace sm_application.Settings
 {
     [CreateAssetMenu(menuName = "Custom/Settings/Game Settings")]
     public class GameSettings : SettingsSO

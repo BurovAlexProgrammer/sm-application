@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace sm_application.Scripts.Main.Wrappers
+namespace sm_application.Wrappers
 {
     [Serializable]
     public class Pool

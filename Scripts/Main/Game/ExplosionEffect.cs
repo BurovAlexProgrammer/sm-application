@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Game
+namespace sm_application.Game
 {
     public class ExplosionEffect : MonoBehaviour
     {

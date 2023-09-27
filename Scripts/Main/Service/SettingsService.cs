@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using sm_application.Scripts.Main.Settings;
+using sm_application.Settings;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class SettingsService : IService, IConstructInstaller
     {

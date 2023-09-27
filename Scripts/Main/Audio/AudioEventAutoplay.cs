@@ -1,8 +1,8 @@
-using smApplication.Scripts.Extension;
+using sm_application.Extension;
 using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Audio
+namespace sm_application.Audio
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioEventAutoplay : MonoBehaviour

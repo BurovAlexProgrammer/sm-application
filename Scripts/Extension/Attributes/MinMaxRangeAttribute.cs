@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace smApplication.Scripts.Extension.Attributes
+namespace sm_application.Extension
 {
     public class MinMaxRangeAttribute : Attribute
     {

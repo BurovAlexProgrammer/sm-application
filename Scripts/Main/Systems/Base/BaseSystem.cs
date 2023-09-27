@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using sm_application.Scripts.Main.Events;
+using sm_application.Events;
 
-namespace sm_application.Scripts.Main.Systems
+namespace sm_application.Systems
 {
     public abstract class BaseSystem : ISystem
     {

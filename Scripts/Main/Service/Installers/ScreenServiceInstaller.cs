@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class ScreenServiceInstaller : BaseServiceInstaller
     {

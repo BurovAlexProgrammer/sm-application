@@ -1,4 +1,4 @@
-﻿namespace sm_application.Scripts.Main.Events
+﻿namespace sm_application.Events
 {
     public class PlayGameEvent : BaseEvent
     {

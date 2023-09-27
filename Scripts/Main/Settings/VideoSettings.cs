@@ -1,11 +1,10 @@
 using System;
-using sm_application.Scripts.Main.Service;
-using sm_application.Scripts.Main.Service;
+using sm_application.Service;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace sm_application.Scripts.Main.Settings
+namespace sm_application.Settings
 {
     [Serializable]
     [CreateAssetMenu(menuName = "Custom/Settings/Video Settings")]

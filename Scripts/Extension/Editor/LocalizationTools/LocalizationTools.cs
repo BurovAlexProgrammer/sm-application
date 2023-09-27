@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using sm_application.Scripts.Main.Localizations;
 using UnityEngine;
 using Newtonsoft.Json;
-using sm_application.Scripts.Main.Wrappers;
+using sm_application.Localizations;
+using sm_application.Wrappers;
 
-namespace smApplication.Scripts.Extension.Editor.LocalizationTools
+namespace sm_application.Extension.Editor.LocalizationTools
 {
     public class LocalizationTools
     {

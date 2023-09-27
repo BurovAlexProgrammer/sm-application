@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace sm_application.Scripts.Main.Service
+namespace sm_application.Service
 {
     public class AudioServiceInstaller : BaseServiceInstaller
     {

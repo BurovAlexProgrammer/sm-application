@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using smApplication.Scripts.Extension;
-using smApplication.Scripts.Extension.Attributes;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using sm_application.Extension;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Game
+namespace sm_application.Game
 {
     public class FlashlightEffect : MonoBehaviour
     { 

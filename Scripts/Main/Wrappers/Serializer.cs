@@ -1,9 +1,9 @@
 using System;
-using smApplication.Scripts.Extension;
 using Newtonsoft.Json;
+using sm_application.Extension;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Wrappers
+namespace sm_application.Wrappers
 {
     public static class Serializer
     {

@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEditor;
 
-namespace smApplication.Scripts.Extension.Editor
+namespace sm_application.Extension.Editor
 {
     public static partial class Common
     {

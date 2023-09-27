@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using sm_application.Scripts.Main.Wrappers;
+using sm_application.Wrappers;
 using UnityEngine;
 
-namespace sm_application.Scripts.Main.Localizations
+namespace sm_application.Localizations
 {
     public class Localization
     {
