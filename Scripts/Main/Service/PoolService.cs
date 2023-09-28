@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using sm_application.Wrappers;
 using UnityEngine;
-using AppContext = sm_application.Game.AppContext;
+using AppContext = sm_application.Context.AppContext;
 
 namespace sm_application.Service
 {
@@ -78,7 +78,7 @@ namespace sm_application.Service
         public void Construct()
         {
             var poolService = new GameObject() { name = "Pool Service"};
-            poolService.transform.SetParent(Game.AppContext.ServicesHierarchy);
+            poolService.transform.SetParent(AppContext.ServicesHierarchy);
             _itemsContainer = poolService.transform;
         }
 

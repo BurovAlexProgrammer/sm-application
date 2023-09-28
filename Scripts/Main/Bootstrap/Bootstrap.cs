@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
+using sm_application.Context;
 using sm_application.Events;
 using sm_application.Service;
 using sm_application.Systems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using AppContext = sm_application.Game.AppContext;
 
 namespace sm_application.Startup
 {
-    public class AppContextInstaller : MonoBehaviour
+    public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private string _startupGameScene;
         [SerializeField] private ScreenServiceInstaller _screenServiceInstaller;
@@ -21,7 +20,7 @@ namespace sm_application.Startup
 
         public void Awake()
         {
-            Game.AppContext.Instantiate();
+            AppContext.Instantiate();
             DOTween.SetTweensCapacity(1000, 50);
             Services.Register<HardwareService>();
             Services.Register<ControlService>(_controlServiceInstaller);
@@ -31,11 +30,11 @@ namespace sm_application.Startup
             Services.Register<AudioService>(_audioServiceInstaller);
             Services.Register<SettingsService>(_settingsServiceInstaller);
             Services.Register<LocalizationService>();
+            Services.Register<SceneLoaderService>();
             
-            SystemsService.Bind<ControlSystem>();
             SystemsService.Bind<ScreenSystem>();
             SystemsService.Bind<DebugSystem>();
-            SystemsService.Bind<AudioSystem>();
+
 
             new StartupSystemsInitializedEvent().Fire();
             StartCoroutine(LateStartup());

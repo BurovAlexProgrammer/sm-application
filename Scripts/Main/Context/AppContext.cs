@@ -2,7 +2,7 @@
 using sm_application.Service;
 using UnityEngine;
 
-namespace sm_application.Game
+namespace sm_application.Context
 {
     public class AppContext : MonoBehaviour
     {
