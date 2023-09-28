@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace sm_application.Service
 {
-    public class DebugService : IService, IConstructInstaller
+    public class DebugService : IServiceWithInstaller
     {
         private DebugServiceConfig _serviceConfig;
         private Transform _gizmosContainer;
@@ -31,6 +31,11 @@ namespace sm_application.Service
             streamWriter.WriteLine("----");
             streamWriter.WriteLine($"{stacktrace}");
             streamWriter.WriteLine("-----------------------------------------------------------------------------------------");
+        }
+
+        public void Construct()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

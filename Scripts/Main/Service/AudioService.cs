@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 
 namespace sm_application.Service
 {
-    public class AudioService : IService, IConstructInstaller
+    public class AudioService : IServiceWithInstaller
     {
         private AudioServiceInstaller _serviceInstaller;
         private AudioListener _audioListener;
@@ -22,6 +22,11 @@ namespace sm_application.Service
         public enum MusicPlayerState {None, MainMenu, Battle}
 
         public AudioListener AudioListener => _audioListener;
+        
+        public void Construct()
+        {
+            throw new NotImplementedException();
+        }
         
         public void Construct(IServiceInstaller installer)
         {

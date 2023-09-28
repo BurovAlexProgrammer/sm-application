@@ -1,6 +1,7 @@
 ﻿namespace sm_application.Service
 {
-    public interface IService
+    public interface IService : IConstruct 
     {
+        
     }
 }

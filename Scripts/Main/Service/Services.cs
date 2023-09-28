@@ -14,12 +14,12 @@ namespace sm_application.Service
             {
                 throw new Exception($"Service type of {typeof(T).Name} registered already");
             }
-            
-            var newService = Activator.CreateInstance<T>();
+
+            var newService = Instantiate<T>();
 
             if (newService is IConstruct)
             {
-                (newService as IConstruct).Construct();
+                newService.Construct();
             }
             
             if (newService is IConstructInstaller)
@@ -29,25 +29,25 @@ namespace sm_application.Service
             
             _registeredServices.Add(typeof(T), newService);
         }
-        
-        public static void Register<T>(IServiceInstaller installer) where T : IService
+
+        public static void Register<T>(IServiceInstaller installer) where T : IServiceWithInstaller
         {
             if (_registeredServices.ContainsKey(typeof(T)))
             {
                 throw new Exception($"Service type of {typeof(T).Name} registered already");
             }
             
-            var newService = Activator.CreateInstance<T>();
+            var newService = Instantiate<T>();
 
-            if (newService is not IConstructInstaller)
-            {
-                throw new Exception($"Service {typeof(T).Name} doesn't have Construct. Use Services.Register() instead");
-            }
-            
-            (newService as IConstructInstaller).Construct(installer); 
+            newService.Construct(installer); 
             _registeredServices.Add(typeof(T), newService);
         }
-
+        
+        public static T Instantiate<T>() where T : IService
+        {
+            return Activator.CreateInstance<T>();
+        }
+        
         public static T Get<T>() where T : IService
         {
             if (_registeredServices.ContainsKey(typeof(T)) == false)

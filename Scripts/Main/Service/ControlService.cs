@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace sm_application.Service
 {
-    public class ControlService: IService, IConstructInstaller
+    public class ControlService: IServiceWithInstaller
     {
         public Controls Controls { get; private set; }
         public CursorLockMode CursorLockState => Cursor.lockState;
@@ -27,6 +27,11 @@ namespace sm_application.Service
             _menuMode = true;
             Controls.Player.Disable();
             Controls.Menu.Enable();
+        }
+        
+        public void Construct()
+        {
+            throw new NotImplementedException();
         }
 
         public void Construct(IServiceInstaller installer)

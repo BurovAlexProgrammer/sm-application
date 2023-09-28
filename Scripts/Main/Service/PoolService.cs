@@ -6,7 +6,7 @@ using AppContext = sm_application.Context.AppContext;
 
 namespace sm_application.Service
 {
-    public class PoolService : IService, IConstruct
+    public class PoolService : IService
     {
         private Dictionary<object, Pool> _poolDictionary = new Dictionary<object, Pool>();
         private Dictionary<UInt64, PoolItem> _itemsDictionary = new Dictionary<UInt64, PoolItem>();

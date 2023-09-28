@@ -4,7 +4,7 @@ using sm_application.Settings;
 
 namespace sm_application.Service
 {
-    public class SettingsService : IService, IConstructInstaller
+    public class SettingsService : IServiceWithInstaller
     {
         private SettingGroup<VideoSettings> _videoSettings;
         private SettingGroup<AudioSettings> _audioSettings;
@@ -80,6 +80,11 @@ namespace sm_application.Service
             {
                 settingGroup.ApplySettings(this);
             }
+        }
+
+        public void Construct()
+        {
+            throw new NotImplementedException();
         }
     }
 }

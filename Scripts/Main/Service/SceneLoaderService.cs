@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace sm_application.Service
 {
-    public class SceneLoaderService : IService, IConstruct
+    public class SceneLoaderService : IService
     {
         private Scene _currentScene;
         private Scene _preparedScene;

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace sm_application.Service
 {
-    public class ScreenService : IService, IConstructInstaller, IDisposable
+    public class ScreenService : IServiceWithInstaller, IDisposable
     {
         public Action<bool> OnDebugProfilerToggleSwitched; 
 
@@ -121,6 +121,11 @@ namespace sm_application.Service
         {
            audioListener.transform.SetParent(_cameraMain.transform);
            audioListener.transform.localPosition = Vector3.zero;
+        }
+
+        public void Construct()
+        {
+            throw new NotImplementedException();
         }
     }
 }

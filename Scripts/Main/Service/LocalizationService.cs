@@ -11,7 +11,7 @@ using UnityEngine.AddressableAssets;
 
 namespace sm_application.Service
 {
-    public class LocalizationService : IService, IConstruct
+    public class LocalizationService : IService
     {
         private Locales _currentLocale;
         private Dictionary<Locales, Localization> _localizations;
