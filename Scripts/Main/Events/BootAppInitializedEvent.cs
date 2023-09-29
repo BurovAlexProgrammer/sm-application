@@ -1,6 +1,6 @@
 ﻿namespace sm_application.Events
 {
-    public class StartupSystemsLateInitEvent : BaseEvent
+    public class BootAppInitializedEvent : BaseEvent
     {
         
     }

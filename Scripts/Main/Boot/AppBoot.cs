@@ -7,11 +7,13 @@ using sm_application.Systems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace sm_application.Startup
+namespace sm_application.Boot
 {
-    public class Bootstrap : MonoBehaviour
+    public class AppBoot : MonoBehaviour
     {
-        [SerializeField] private string _startupGameScene;
+        [SerializeField] private GameContext _gameContext;
+        [Space]
+        [SerializeField] private string _gameBootScene;
         [SerializeField] private ScreenServiceInstaller _screenServiceInstaller;
         [SerializeField] private ControlServiceInstaller _controlServiceInstaller;
         [SerializeField] private DebugServiceInstaller _debugServiceInstaller;
@@ -35,16 +37,16 @@ namespace sm_application.Startup
             SystemsService.Bind<ScreenSystem>();
             SystemsService.Bind<DebugSystem>();
 
-
-            new StartupSystemsInitializedEvent().Fire();
-            StartCoroutine(LateStartup());
+            new BootAppInitializedEvent().Fire();
+            
+            _gameContext.Construct();
         }
 
         private IEnumerator LateStartup()
         {
             yield return null;
-            new StartupSystemsLateInitEvent().Fire();
-            SceneManager.LoadScene(_startupGameScene);
+            new GameContextInitializedEvent().Fire();
+            SceneManager.LoadScene(_gameBootScene);
         }
     }
 }
