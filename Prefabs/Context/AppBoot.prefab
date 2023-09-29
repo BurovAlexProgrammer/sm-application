@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 863953413682548770}
   - component: {fileID: 863953413682548771}
   m_Layer: 0
-  m_Name: Startup
+  m_Name: AppBoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

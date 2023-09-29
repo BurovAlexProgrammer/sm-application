@@ -7,10 +7,8 @@ namespace sm_application.Context
 {
     public class SceneContext : MonoBehaviour
     {
-        private static string _initSceneName;
+        [SerializeField] private SceneContextInstaller[] _sceneContextInstallers;
         
-        private SceneContextInstaller[] _sceneContextInstallers;
-
         private void Awake()
         {
             if (!AppContext.IsInitialized)
@@ -43,7 +41,7 @@ namespace sm_application.Context
                 await UniTask.NextFrame();
             }
 
-            SceneManager.LoadScene(_initSceneName);
+            SceneManager.LoadScene(AppContext.InitScene);
         }
     }
 }

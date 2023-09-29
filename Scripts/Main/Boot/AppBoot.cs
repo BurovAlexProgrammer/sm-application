@@ -40,12 +40,7 @@ namespace sm_application.Boot
             new BootAppInitializedEvent().Fire();
             
             _gameContext.Construct();
-        }
-
-        private IEnumerator LateStartup()
-        {
-            yield return null;
-            new GameContextInitializedEvent().Fire();
+            
             SceneManager.LoadScene(_gameBootScene);
         }
     }
