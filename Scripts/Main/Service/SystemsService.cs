@@ -24,6 +24,22 @@ namespace sm_application.Service
             newSystem.AddEventHandlers();
             return newSystem;
         }
+        
+        public static BaseSystem Bind(Type type) 
+        {
+            if (type.BaseType != typeof(BaseSystem))
+            {
+                throw new Exception($"SystemsService cannot bind. Type '{type}' is not BaseSystem type.");
+            }
+            
+            if (_systems.ContainsKey(type)) throw new Exception("System has bound already.");
+
+            var newSystem = Activator.CreateInstance(type) as BaseSystem; 
+            _systems.Add(type, newSystem);
+            newSystem.Init();
+            newSystem.AddEventHandlers();
+            return newSystem;
+        }
 
         public static void FireEvent<T>(T firedEvent) where T : BaseEvent
         {
@@ -38,7 +54,24 @@ namespace sm_application.Service
             }
         }
 
-        public static void Dispose()
+
+        public static void DisposeSystem(Type systemType)
+        {
+            _systems[systemType].Dispose();
+            _systems.Remove(systemType);
+        }
+        
+        public static void DisposeSystem(BaseSystem system)
+        {
+            DisposeSystem(system.GetType());
+        }
+        
+        public static void DisposeSystem<T>() where T : BaseSystem
+        {
+            DisposeSystem(typeof(T));
+        }
+
+        public static void DisposeAllSystems()
         {
             foreach (var key in _systems.Keys.ToList())
             {

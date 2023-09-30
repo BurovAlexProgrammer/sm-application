@@ -297,9 +297,9 @@ MonoBehaviour:
   InternalProfilerManager: {fileID: 394764085355896457}
   InternalProfilerPanels: {fileID: 4525918694948487683}
   InternalProfilerToggle: {fileID: 3027022478318800228}
-  CameraTopFrame: {fileID: 1843110620652957208}
   ShowProfilerOnStartup: 1
   CameraHolder: {fileID: 7649848082608286040}
+  TopFrame: {fileID: 1843110620652957208}
 --- !u!1 &4280167464216941228
 GameObject:
   m_ObjectHideFlags: 0

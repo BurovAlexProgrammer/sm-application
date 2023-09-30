@@ -41,7 +41,7 @@ namespace sm_application.Context
 
         private void OnApplicationQuit()
         {
-            SystemsService.Dispose();
+            SystemsService.DisposeAllSystems();
             Services.Dispose();
             _initScene = null;
             _isInitialized = false;

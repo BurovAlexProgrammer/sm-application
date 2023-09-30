@@ -50,6 +50,25 @@ namespace sm_application.Extension
             if (float.IsNaN(a) == false) color.a = a;
             return color;
         }
+        
+        public static Color SetNew(this Color color, float r = float.NaN, float g= float.NaN, float b = float.NaN, float a= float.NaN)
+        {
+            if (float.IsNaN(r) == false) color.r = r;
+            if (float.IsNaN(g) == false) color.g = g;
+            if (float.IsNaN(b) == false) color.b = b;
+            if (float.IsNaN(a) == false) color.a = a;
+            return color;
+        }
+        
+        public static Color NewHex(this Color color, string hex)
+        {
+            if (ColorUtility.TryParseHtmlString(hex, out var result))
+            {
+                return result;
+            }
+
+            throw new Exception($"Cannot parse hex color: {hex}");
+        }
 
         public static async UniTask WaitInSeconds(this float time, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default)
         {

@@ -1,4 +1,7 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using sm_application.Events;
 using sm_application.Extension;
 using sm_application.Settings;
 using sm_application.Wrappers;
@@ -12,7 +15,7 @@ namespace sm_application.Service
 {
     public class ScreenService : IServiceWithInstaller, IDisposable
     {
-        public Action<bool> OnDebugProfilerToggleSwitched; 
+        public Action<bool> OnDebugProfilerToggleSwitched;
 
         private Camera _cameraMain;
         private Volume _volume;
@@ -21,13 +24,14 @@ namespace sm_application.Service
         private GraphyManager _internalProfilerManager;
         private Toggle _internalProfilerToggle;
         private Transform _cameraHolder;
+        private Image _topFrame;
 
         public enum CameraType
         {
             MainCamera,
             //UiCamera
         }
-        
+
         public void ToggleDisplayProfiler()
         {
             _internalProfiler.gameObject.SwitchActive();
@@ -47,7 +51,7 @@ namespace sm_application.Service
             _internalProfilerToggle = screenServiceInstaller.InternalProfilerToggle;
             _internalProfiler.SetActive(screenServiceInstaller.ShowProfilerOnStartup);
             _cameraHolder = screenServiceInstaller.CameraHolder;
-
+            _topFrame = screenServiceInstaller.TopFrame;
             _internalProfilerToggle.isOn = _internalProfiler.activeSelf;
             _internalProfilerToggle.onValueChanged.AddListener(OnProfilerToggleSwitched);
         }
@@ -62,7 +66,31 @@ namespace sm_application.Service
             _internalProfilerToggle.onValueChanged.RemoveListener(OnProfilerToggleSwitched);
             GC.SuppressFinalize(this);
         }
-        
+
+        public async UniTask SoftTopFrameVisibleAsync(bool isShow, RequireLoadSceneEvent loadParams)
+        {
+            if (loadParams.FrameColorHex != "000000")
+            {
+                _topFrame.color = _topFrame.color.NewHex(loadParams.FrameColorHex);
+            } 
+            
+            await DOVirtual.Float(
+                    isShow ? 0f : 1f,
+                    isShow ? 1f : 0f,
+                    loadParams.Duration,
+                    x => _topFrame.color = _topFrame.color.SetNew(a: x)
+                )
+                .SetEase(loadParams.Ease)
+                .AsyncWaitForCompletion();
+
+            _topFrame.color = _topFrame.color.SetNew(a: isShow ? 1f : 0f);
+        }
+
+        public void SetTopFrameVisible(bool isShow)
+        {
+            _topFrame.color = _topFrame.color.SetNew(a: isShow ? 1f : 0f);
+        }
+
         public void ActiveProfileVolume<T>(bool active) where T : IPostProcessComponent
         {
             var type = typeof(T);
@@ -74,7 +102,7 @@ namespace sm_application.Service
 
             throw new Exception($"VolumeProfile {type.FullName} not found.");
         }
-        
+
         public void SetCameraPlace(Transform parent)
         {
             Log.Info("Camera was moved to cameraHolder (Click to select CameraHolder)", parent);
@@ -116,11 +144,11 @@ namespace sm_application.Service
         {
             _internalProfilerManager.AudioListener = audioListener;
         }
-        
+
         public void SetAudioListenerToCamera(AudioListener audioListener)
         {
-           audioListener.transform.SetParent(_cameraMain.transform);
-           audioListener.transform.localPosition = Vector3.zero;
+            audioListener.transform.SetParent(_cameraMain.transform);
+            audioListener.transform.localPosition = Vector3.zero;
         }
 
         public void Construct()

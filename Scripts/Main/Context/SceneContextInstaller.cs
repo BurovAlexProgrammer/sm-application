@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace sm_application.Context
 {
-    abstract class SceneContextInstaller : MonoBehaviour, IConstruct, IDisposable
+    public abstract class SceneContextInstaller : MonoBehaviour, IConstruct, IDisposable
     {
         public virtual void Construct()
         {

@@ -12,8 +12,8 @@ namespace sm_application.Service
         public GraphyManager InternalProfilerManager;
         public GameObject InternalProfilerPanels;
         public Toggle InternalProfilerToggle;
-        public Image CameraTopFrame;
         public bool ShowProfilerOnStartup;
         public Transform CameraHolder;
+        public Image TopFrame;
     }
 }

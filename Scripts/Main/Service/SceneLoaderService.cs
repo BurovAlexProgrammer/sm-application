@@ -20,11 +20,10 @@ namespace sm_application.Service
             _bootScene = SceneManager.GetSceneByName(App.BootScene);
             _currentScene = _initialScene = SceneManager.GetActiveScene();
         }
-        
-        public async UniTask LoadSceneAsync(string sceneName)
+
+        public void LoadScene(string sceneName)
         {
-            await UniTask.WhenAll(PrepareScene(sceneName));
-            SwitchToPreparedScene();
+            SceneManager.LoadScene(sceneName);
         }
 
         public async void ReloadActiveScene()
@@ -36,41 +35,42 @@ namespace sm_application.Service
             _preparedScene = sceneInstance.Scene;
             _preparedScene.SetActive(false);
         }
-
-        public void UnloadCurrentScene()
-        {
-            var currentScene = SceneManager.GetActiveScene();
-            var newScene = SceneManager.CreateScene("Empty");
-            newScene.SetActive(true);
-
-            SceneManager.UnloadSceneAsync(currentScene);
-        }
         
-        public async void UnloadActiveScene()
-        {
-            await SceneManager.UnloadSceneAsync(_currentScene);
-        }
+        // public async UniTask LoadSceneAsync(string sceneName)
+        // {
+        //     await UniTask.WhenAll(PrepareScene(sceneName));
+        //     SwitchToPreparedScene();
+        // }
 
-        public bool IsCustomScene()
-        {
-            return _initialScene != _bootScene;
-        }
-
-        private async UniTask PrepareScene(string sceneName)
-        {
-            _currentScene = SceneManager.GetActiveScene();
-            var asyncOperationHandle = Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            await asyncOperationHandle.Task;
-            var sceneInstance = asyncOperationHandle.Result;
-            _preparedScene = sceneInstance.Scene;
-            _preparedScene.SetActive(false);
-        }
-
-        private void SwitchToPreparedScene()
-        {
-            _preparedScene.SetActive(true);
-            SceneManager.SetActiveScene(_preparedScene);
-            SceneManager.UnloadSceneAsync(_currentScene);
-        }
+        // public void UnloadCurrentScene()
+        // {
+        //     var currentScene = SceneManager.GetActiveScene();
+        //     var newScene = SceneManager.CreateScene("Empty");
+        //     newScene.SetActive(true);
+        //
+        //     SceneManager.UnloadSceneAsync(currentScene);
+        // }
+        //
+        // public async void UnloadActiveScene()
+        // {
+        //     await SceneManager.UnloadSceneAsync(_currentScene);
+        // }
+        //
+        // private async UniTask PrepareScene(string sceneName)
+        // {
+        //     _currentScene = SceneManager.GetActiveScene();
+        //     var asyncOperationHandle = Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        //     await asyncOperationHandle.Task;
+        //     var sceneInstance = asyncOperationHandle.Result;
+        //     _preparedScene = sceneInstance.Scene;
+        //     _preparedScene.SetActive(false);
+        // }
+        //
+        // private void SwitchToPreparedScene()
+        // {
+        //     _preparedScene.SetActive(true);
+        //     SceneManager.SetActiveScene(_preparedScene);
+        //     SceneManager.UnloadSceneAsync(_currentScene);
+        // }
     }
 }
