@@ -1,12 +1,25 @@
 using System;
-using Cysharp.Threading.Tasks;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace sm_application.Extension
 {
     public static partial class Common
     {
+        public static void ClearLogs()
+        {
+            #if UNITY_EDITOR
+            var assembly = Assembly.GetAssembly(typeof(Editor));
+            var type = assembly.GetType("UnityEditor.LogEntries");
+            var method = type.GetMethod("Clear");
+            method.Invoke(new object(), null);
+            #endif
+        }
+        
         public static T FindComponentInScene<T>() where T : MonoBehaviour
         {
             var roots = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -28,7 +41,7 @@ namespace sm_application.Extension
 
             return null;
         }
-        
+
         public static string CleanName(this GameObject gameObject)
         {
             gameObject.name = gameObject.name.Replace("(Clone)", "").Trim();

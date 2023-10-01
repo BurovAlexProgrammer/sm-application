@@ -89,6 +89,12 @@ namespace sm_application.Extension
 
             animator.SetBool(AnimatorParameters[AnimatorParameterNames.Attack], value);
         }
+        
+        public static float GetClipLength(this Animator animator, int layerIndex)
+        {
+            return animator.GetCurrentAnimatorClipInfo(layerIndex).Length;
+        }
+
 
         public static class ExceptionMessages
         {
