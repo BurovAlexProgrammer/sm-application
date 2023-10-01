@@ -7,6 +7,28 @@ namespace sm_application.Extension
 {
     public static partial class Common
     {
+        public static T FindComponentInScene<T>() where T : MonoBehaviour
+        {
+            var roots = SceneManager.GetActiveScene().GetRootGameObjects();
+            
+            foreach (var gameObject in roots)
+            {
+                if (gameObject.TryGetComponent<T>(out var result))
+                {
+                    return result;
+                }
+
+                var result2 = gameObject.GetComponentInChildren<T>();
+
+                if (result2 != null)
+                {
+                    return result2;
+                }
+            }
+
+            return null;
+        }
+        
         public static string CleanName(this GameObject gameObject)
         {
             gameObject.name = gameObject.name.Replace("(Clone)", "").Trim();

@@ -1,4 +1,6 @@
+using System;
 using sm_application.Service;
+using sm_application.Wrappers;
 using TMPro;
 using UnityEngine;
 
@@ -11,22 +13,50 @@ namespace sm_application.Localizations
         [SerializeField] private string _prefix;
         [SerializeField] private string _postfix;
 
-        private TextMeshProUGUI _textMesh;
-
-        private void Awake()
+        private TextMeshPro _textMesh;
+        private TextMeshProUGUI _textMeshUI;
+        
+        protected override void Awake()
         {
-            _textMesh = GetComponent<TextMeshProUGUI>();
+            base.Awake();
+            _textMesh = GetComponent<TextMeshPro>();
+            _textMeshUI = GetComponent<TextMeshProUGUI>();
+            _localizationService.LocalizationChanged += OnLocalizationService;
         }
 
-        protected override void SetText()
+        private void OnLocalizationService()
+        {
+            SetText();
+        }
+
+        public override void SetText()
         {
             if (string.IsNullOrEmpty(_localizedTextKey))
             {
-                _textMesh.text = "---NO KEY---";
+                SetTextToComponents("---NO KEY---");
+                return;
+            }
+
+            if (!_localizationService.IsLoaded)
+            {
+                Log.Exception(new Exception("LocalizationService is not loaded"));
                 return;
             }
             
-            _textMesh.text = _prefix + Services.Get<LocalizationService>().GetLocalizedText(_localizedTextKey) + _postfix;
+            SetTextToComponents(_prefix + Services.Get<LocalizationService>().GetLocalizedText(_localizedTextKey) + _postfix);
+        }
+
+        private void SetTextToComponents(string text)
+        {
+            if (_textMesh != null)
+            {
+                _textMesh.text = text;
+            }
+
+            if (_textMeshUI != null)
+            {
+                _textMeshUI.text = text;
+            }
         }
     }
 }

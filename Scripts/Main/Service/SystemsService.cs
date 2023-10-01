@@ -43,14 +43,18 @@ namespace sm_application.Service
 
         public static void FireEvent<T>(T firedEvent) where T : BaseEvent
         {
+            var firedEventType = firedEvent.GetType();
             var color = Common.ThemeColorHex("#00952A", "#017020");
-            Log.Info($"Fired event <color={color}>{firedEvent.GetType().Name}</color>. {DateTime.Now.ToString("hh:mm:ss")}");
+            Log.Info($"Fired event <color={color}>{firedEventType.Name}</color>. {DateTime.Now.ToString("hh:mm:ss")}");
 
             foreach (var (key, system) in _systems)
             {
-                if (system.EventCallbacks.ContainsKey(firedEvent.GetType()) == false) continue;
+                if (system.EventCallbacks.ContainsKey(firedEventType) == false) continue;
                 
-                system.EventCallbacks[firedEvent.GetType()]?.Invoke(firedEvent);
+                var action = system.EventCallbacks[firedEventType];
+                var actionType = typeof(Action<>).MakeGenericType(firedEventType);
+                actionType.GetMethod("Invoke").Invoke(action, new object[] { firedEvent });
+                // system.EventCallbacks[firedEvent.GetType()]?.Invoke(firedEvent);
             }
         }
 

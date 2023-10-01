@@ -18,10 +18,11 @@ MonoBehaviour:
   m_GUID: a89833ba770e82a4cb38f419603d9f45
   m_SerializeEntries:
   - m_GUID: 7b0e00264f0d4df418a2dd0b4a887fb8
-    m_Address: Assets/_Project/Data/Locales
+    m_Address: Locales
     m_ReadOnly: 0
     m_SerializedLabels:
     - locale
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: fd73b48df9aa6a04aad1743f5397afa7, type: 2}
   m_SchemaSet:

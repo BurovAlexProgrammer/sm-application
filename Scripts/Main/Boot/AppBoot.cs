@@ -36,6 +36,7 @@ namespace sm_application.Boot
             
             SystemsService.Bind<ScreenSystem>();
             SystemsService.Bind<DebugSystem>();
+            SystemsService.Bind<LocalizationSystem>();
 
             new BootAppInitializedEvent().Fire();
             

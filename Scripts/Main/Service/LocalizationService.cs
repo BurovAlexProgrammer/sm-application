@@ -1,13 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using sm_application.Extension;
 using sm_application.Localizations;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace sm_application.Service
 {
@@ -18,63 +13,22 @@ namespace sm_application.Service
         private Localization _currentLocalization;
         private bool _isLoaded;
 
+        public event Action LocalizationChanged;
+
         public Dictionary<Locales, Localization> Localizations => _localizations;
         public bool IsLoaded => _isLoaded;
-        
-        public async void Construct()
+        public Locales CurrentLocale => _currentLocale;
+
+        public void Construct()
         {
             _currentLocale = Services.Get<SettingsService>().GameSettings.CurrentLocale;
             _localizations = new Dictionary<Locales, Localization>();
-            var resourceLocations = await Addressables.LoadResourceLocationsAsync("locale").Task;
-            var tasks = resourceLocations
-                .Where(x => x.ToString().Contains(".csv"))
-                .Select(x => Addressables.LoadAssetAsync<TextAsset>(x).Task).ToList();
-
-            await Task.WhenAll(tasks);
-
-            for (var i = 0; i < tasks.Count; i++)
-            {
-                var localeText = tasks[i].Result;
-                var filePath = resourceLocations[i].ToString();
-                var localization = LoadLocaleFile(localeText, filePath);
-                _localizations.Add(localization.Locale, localization);
-            }
-
-            if (!_localizations.ContainsKey(_currentLocale))
-                throw new Exception("Current localization not found.");
-
-            _currentLocalization = _localizations[_currentLocale];
-            _isLoaded = true;
         }
 
-        public async UniTask<Dictionary<Locales, Localization>> GetLocalizationsAsync()
-        {
-            while (!_isLoaded)
-            {
-                await UniTask.NextFrame();
-            }
-
-            return _localizations;
-        }
-
-        private Localization LoadLocaleFile(TextAsset textAsset, string filePath)
-        {
-            var lines = textAsset.text.SplitLines();
-            var locale = lines[0];
-            var formatInfoMaybeJson = lines[1];
-            var hint = lines[2];
-
-            var itemList = new List<string>();
-            for (var i = 3; i < lines.Length; i++)
-            {
-                itemList.Add(lines[i]);
-            }
-
-            return new Localization(locale, hint, formatInfoMaybeJson, itemList.ToArray(), filePath);
-        }
-        
         public string GetLocalizedText(string key)
         {
+            if (!_isLoaded) return null;
+
             if (_currentLocalization.LocalizedItems.ContainsKey(key) == false)
             {
                 AddNewLocaleKeyToFiles(key);
@@ -87,7 +41,7 @@ namespace sm_application.Service
         {
             if (Application.isEditor)
             {
-                Debug.LogError($"Key '{newKey}' not in current locale '{_currentLocale.ToString()}'.");
+                Debug.LogError($"Key '{newKey}' not in current locale '{CurrentLocale.ToString()}'.");
                 
                 foreach (var localization in _localizations.Values)
                 {
@@ -104,8 +58,24 @@ namespace sm_application.Service
             }
             else
             {
-                Debug.LogError($"Key '{newKey}' not in current locale '{_currentLocale.ToString()}'");
+                Debug.LogError($"Key '{newKey}' not in current locale '{CurrentLocale.ToString()}'");
             }
+        }
+
+        public void SetLoadedLocalizations(Localization currentLocalization, Dictionary<Locales, Localization> localizations)
+        {
+            _currentLocalization = currentLocalization;
+            _localizations = localizations;
+            _isLoaded = true;
+            LocalizationChanged?.Invoke();
+        }
+        
+        public void SetCurrentLocalization(Localization currentLocalization)
+        {
+            if (_currentLocalization == currentLocalization) return;
+            
+            _currentLocalization = currentLocalization;
+            LocalizationChanged?.Invoke();
         }
     }
 }

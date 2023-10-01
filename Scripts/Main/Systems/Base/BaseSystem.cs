@@ -6,9 +6,9 @@ namespace sm_application.Systems
 {
     public abstract class BaseSystem : ISystem
     {
-        public Dictionary<Type, Action<BaseEvent>> _eventCallbacks = new Dictionary<Type, Action<BaseEvent>>();
+        private Dictionary<Type, object> _eventCallbacks = new Dictionary<Type, object>();
 
-        public Dictionary<Type, Action<BaseEvent>> EventCallbacks => _eventCallbacks;
+        public Dictionary<Type, object> EventCallbacks => _eventCallbacks;
 
         public virtual void Init()
         {
@@ -18,7 +18,7 @@ namespace sm_application.Systems
         {
         }
 
-        public void AddListener<T>(Action<BaseEvent> callback) where T : BaseEvent
+        public void AddListener<T>(Action<T> callback)
         {
             var type = typeof(T);
 

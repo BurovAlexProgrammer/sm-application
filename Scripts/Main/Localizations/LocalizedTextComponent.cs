@@ -1,22 +1,30 @@
-using Cysharp.Threading.Tasks;
+using sm_application.Service;
 using UnityEngine;
 
 namespace sm_application.Localizations
 {
     public abstract class LocalizedTextComponent : MonoBehaviour
     {
-        // protected LocalizationService _localization;
+        protected LocalizationService _localizationService;
 
-        private async void Start()
+        protected virtual void Awake()
         {
-            // while (!_localization.IsLoaded)
-            {
-                await UniTask.NextFrame();
-            }
-            
+            _localizationService = Services.Get<LocalizationService>();
+            _localizationService.LocalizationChanged += OnLocalizationChanged;
+        }
+
+        private void OnLocalizationChanged()
+        {
             SetText();
         }
 
-        protected abstract void SetText();
+        private void Start()
+        {
+            if (!_localizationService.IsLoaded) return;
+
+            SetText();
+        }
+
+        public abstract void SetText();
     }
 }

@@ -6,9 +6,9 @@ namespace sm_application.Systems
 {
     public interface ISystem
     {
-        Dictionary<Type, Action<BaseEvent>> EventCallbacks { get; }
+        Dictionary<Type, object> EventCallbacks { get; }
         void Init();
-        void AddListener<T>(Action<BaseEvent> callback) where T : BaseEvent;
+        void AddListener<T>(Action<T> callback);
         void RemoveListener<T>();
         void AddEventHandlers();
         void RemoveEventHandlers();

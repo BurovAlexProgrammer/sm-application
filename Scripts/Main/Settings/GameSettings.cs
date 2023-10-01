@@ -1,4 +1,5 @@
 using sm_application.Localizations;
+using sm_application.Scripts.Main.Events;
 using sm_application.Service;
 using UnityEngine;
 
@@ -11,8 +12,14 @@ namespace sm_application.Settings
         
         [Range(Attributes.SensitivityMin,Attributes.SensitivityMax)] 
         public float Sensitivity;
-        
-        public override void ApplySettings(SettingsService settingsService) {}
+
+        public override void ApplySettings(SettingsService settingsService)
+        {
+            new RequireLocalizationChangeEvent()
+            {
+                CurrentLocale = settingsService.GameSettings.CurrentLocale
+            }.Fire();
+        }
         
         public static class Attributes
         {

@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using sm_application.Constants;
+using sm_application.Wrappers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,7 +41,7 @@ namespace sm_application.Context
             {
                 await UniTask.NextFrame();
             }
-
+            
             SceneManager.LoadScene(AppContext.InitScene);
         }
     }
